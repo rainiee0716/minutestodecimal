@@ -2,23 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg: #f8fafc;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--bg);
+  background: #f8fafc;
   color: #0f172a;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
+  @apply font-sans antialiased;
 }
 
 .container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+::selection {
+  background: #dbeafe;
+}
+
+/* details/summary FAQ accordion: hide the default disclosure marker */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* cleaner number inputs (keyboard arrows still work) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

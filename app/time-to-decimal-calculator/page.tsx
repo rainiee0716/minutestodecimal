@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
+import PageHeader from "@/components/PageHeader";
+import AdSlot from "@/components/AdSlot";
+import ProseSection from "@/components/ProseSection";
+import FAQList from "@/components/FAQList";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export const metadata: Metadata = {
   title: "Time to Decimal Calculator",
@@ -26,54 +31,44 @@ const faq = [
 export default function Page() {
   return (
     <article>
-      <h1 className="mb-2 text-3xl font-bold text-ink">Time to Decimal Calculator</h1>
-      <p className="mb-6 text-muted">
-        Turn a work shift or clock duration into decimal hours for your timesheet. Free and instant.
-      </p>
-
-      <TimeDecimalCalculator />
-
-      <section className="mt-10">
-        <h2 className="mb-3 text-xl font-semibold text-ink">Why convert time to decimal?</h2>
-        <p className="text-slate-700">
-          When you log a shift on a timesheet, payroll needs a single decimal number, not &ldquo;7h 30m.&rdquo;
-          Converting makes the math straightforward: multiply decimal hours by your hourly rate to get gross pay. The
-          converter above handles both directions.
-        </p>
-      </section>
-
-      <section className="mt-8">
-        <h2 className="mb-3 text-xl font-semibold text-ink">Frequently asked questions</h2>
-        <div className="space-y-4">
-          {faq.map((item) => (
-            <div key={item.q}>
-              <h3 className="font-semibold text-ink">{item.q}</h3>
-              <p className="text-slate-700">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-8 rounded-lg border border-slate-200 bg-white p-4 text-sm text-muted">
-        Related:{" "}
-        <a href="/" className="text-brand no-underline hover:text-brand-dark">
-          Minutes to Decimal Converter
-        </a>
-      </section>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Time to Decimal Calculator",
-            applicationCategory: "UtilitiesApplication",
-            operatingSystem: "Any",
-            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          }),
-        }}
+      <PageHeader
+        title="Time to Decimal Calculator"
+        description="Turn a work shift or clock duration into decimal hours for your timesheet. Free and instant."
       />
+
+      <div className="container pb-16">
+        <div className="mx-auto max-w-5xl">
+          <TimeDecimalCalculator />
+        </div>
+
+        <AdSlot />
+
+        <ProseSection title="Why convert time to decimal?">
+          <p>
+            When you log a shift on a timesheet, payroll needs a single decimal number, not
+            &ldquo;7h 30m.&rdquo; Converting makes the math straightforward: multiply decimal hours
+            by your hourly rate to get gross pay. The converter above handles both directions.
+          </p>
+        </ProseSection>
+
+        <FAQList items={faq} />
+
+        <RelatedLinks links={[{ href: "/", label: "Minutes to Decimal Converter" }]} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Time to Decimal Calculator",
+              applicationCategory: "UtilitiesApplication",
+              operatingSystem: "Any",
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            }),
+          }}
+        />
+      </div>
     </article>
   );
 }

@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Inter } from "next/font/google";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 // Set NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXX in .env.local (or Vercel env) once your
 // AdSense account is approved. Until then, no ad script is injected.
@@ -24,27 +33,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <header className="border-b border-slate-200 bg-white">
-          <div className="container flex items-center justify-between py-3">
-            <a href="/" className="text-lg font-bold text-brand no-underline">
-              minutestodecimal<span className="text-brand-dark">.org</span>
-            </a>
-            <nav className="flex gap-4 text-sm text-muted">
-              <a href="/time-to-decimal-calculator" className="no-underline hover:text-brand">
-                Time to Decimal
-              </a>
-              <a href="/about" className="no-underline hover:text-brand">
-                About
-              </a>
-              <a href="/contact" className="no-underline hover:text-brand">
-                Contact
-              </a>
-            </nav>
-          </div>
-        </header>
-        <main className="container py-8">{children}</main>
+    <html lang="en" className={inter.variable}>
+      <body className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">{children}</main>
         {ADSENSE_CLIENT && (
           <Script
             id="adsbygoogle-init"
@@ -53,20 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             crossOrigin="anonymous"
           />
         )}
-        <footer className="border-t border-slate-200 bg-white">
-          <div className="container flex flex-wrap gap-4 py-6 text-sm text-muted">
-            <a href="/privacy" className="no-underline hover:text-brand">
-              Privacy Policy
-            </a>
-            <a href="/about" className="no-underline hover:text-brand">
-              About
-            </a>
-            <a href="/contact" className="no-underline hover:text-brand">
-              Contact
-            </a>
-            <span>© {new Date().getFullYear()} minutestodecimal.org</span>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
