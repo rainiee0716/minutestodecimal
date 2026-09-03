@@ -1,5 +1,7 @@
 export const HEADER_NAV = [
   { href: "/time-to-decimal-calculator", label: "Time to Decimal" },
+  { href: "/hours-to-decimal-calculator", label: "Hours to Decimal" },
+  { href: "/convert-hours-to-decimal", label: "Convert Hours" },
   { href: "/hours-to-minutes-calculator", label: "Hours to Minutes" },
   { href: "/minutes-to-hours-converter", label: "Minutes to Hours" },
   { href: "/about", label: "About" },
@@ -19,6 +21,9 @@ export const FOOTER_COLS: {
       { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
       { href: "/decimal-to-hours-calculator", label: "Decimal to Hours Calculator" },
       { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
+      { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
+      { href: "/convert-hours-to-decimal", label: "Convert Hours to Decimal" },
+      { href: "/minutes-to-decimal-hours-converter", label: "Minutes to Decimal Hours" },
     ],
   },
   {
