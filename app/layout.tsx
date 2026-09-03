@@ -31,9 +31,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/" className="text-lg font-bold text-brand no-underline">
               minutestodecimal<span className="text-brand-dark">.org</span>
             </a>
-            <nav className="text-sm text-muted">
+            <nav className="flex gap-4 text-sm text-muted">
               <a href="/time-to-decimal-calculator" className="no-underline hover:text-brand">
                 Time to Decimal
+              </a>
+              <a href="/about" className="no-underline hover:text-brand">
+                About
+              </a>
+              <a href="/contact" className="no-underline hover:text-brand">
+                Contact
               </a>
             </nav>
           </div>
@@ -51,6 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container flex flex-wrap gap-4 py-6 text-sm text-muted">
             <a href="/privacy" className="no-underline hover:text-brand">
               Privacy Policy
+            </a>
+            <a href="/about" className="no-underline hover:text-brand">
+              About
+            </a>
+            <a href="/contact" className="no-underline hover:text-brand">
+              Contact
             </a>
             <span>© {new Date().getFullYear()} minutestodecimal.org</span>
           </div>
