@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Decimal to Hours Calculator",
   description:
     "Convert decimal hours back into hours and minutes (e.g. 1.75 → 1h 45m). Free, instant tool for reading timesheets.",
-  alternates: { canonical: "https://minutestodecimal.org/decimal-to-hours-calculator" },
+  alternates: { canonical: "https://www.minutestodecimal.org/decimal-to-hours-calculator" },
 };
 
 const faq = [

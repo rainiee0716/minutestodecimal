@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Minutes to Decimal Converter",
   description:
     "Free tool to convert hours and minutes into decimal time for payroll and timesheets. Instant, accurate, no sign-up.",
-  alternates: { canonical: "https://minutestodecimal.org/" },
+  alternates: { canonical: "https://www.minutestodecimal.org/" },
 };
 
 const faq = [

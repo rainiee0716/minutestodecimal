@@ -5,7 +5,7 @@ import ProseSection from "@/components/ProseSection";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy policy for minutestodecimal.org.",
-  alternates: { canonical: "https://minutestodecimal.org/privacy" },
+  alternates: { canonical: "https://www.minutestodecimal.org/privacy" },
 };
 
 export default function Privacy() {

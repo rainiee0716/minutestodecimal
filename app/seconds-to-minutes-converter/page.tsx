@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Seconds to Minutes Converter",
   description:
     "Convert seconds into minutes (e.g. 90s → 1.5 min). Free, instant tool for timers, workouts, and time math.",
-  alternates: { canonical: "https://minutestodecimal.org/seconds-to-minutes-converter" },
+  alternates: { canonical: "https://www.minutestodecimal.org/seconds-to-minutes-converter" },
 };
 
 const faq = [

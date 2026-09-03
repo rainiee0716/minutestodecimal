@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "minutestodecimal.org builds free, fast time-conversion tools for timesheets, payroll, and everyday scheduling.",
-  alternates: { canonical: "https://minutestodecimal.org/about" },
+  alternates: { canonical: "https://www.minutestodecimal.org/about" },
 };
 
 export default function Page() {

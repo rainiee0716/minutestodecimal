@@ -6,7 +6,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with minutestodecimal.org about a tool, a correction, or a suggestion.",
-  alternates: { canonical: "https://minutestodecimal.org/contact" },
+  alternates: { canonical: "https://www.minutestodecimal.org/contact" },
 };
 
 export default function Page() {

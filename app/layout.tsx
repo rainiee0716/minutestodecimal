@@ -16,7 +16,7 @@ const inter = Inter({
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://minutestodecimal.org"),
+  metadataBase: new URL("https://www.minutestodecimal.org"),
   title: {
     default: "Minutes to Decimal Converter — Free Time Card Calculator",
     template: "%s | minutestodecimal.org",

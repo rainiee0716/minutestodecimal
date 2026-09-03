@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Time to Decimal Calculator",
   description:
     "Convert clock time and work shifts into decimal hours for payroll and timesheets. Free and instant.",
-  alternates: { canonical: "https://minutestodecimal.org/time-to-decimal-calculator" },
+  alternates: { canonical: "https://www.minutestodecimal.org/time-to-decimal-calculator" },
 };
 
 const faq = [

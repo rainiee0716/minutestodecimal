@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Minutes to Hours Converter",
   description:
     "Convert minutes into decimal hours for timesheets and payroll. Free, instant, no sign-up required.",
-  alternates: { canonical: "https://minutestodecimal.org/minutes-to-hours-converter" },
+  alternates: { canonical: "https://www.minutestodecimal.org/minutes-to-hours-converter" },
 };
 
 const faq = [

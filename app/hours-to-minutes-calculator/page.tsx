@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Hours to Minutes Calculator",
   description:
     "Convert hours (including decimal hours) and minutes into total minutes. Free, instant tool for time tracking, shifts, and payroll.",
-  alternates: { canonical: "https://minutestodecimal.org/hours-to-minutes-calculator" },
+  alternates: { canonical: "https://www.minutestodecimal.org/hours-to-minutes-calculator" },
 };
 
 const faq = [
