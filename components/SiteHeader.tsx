@@ -34,7 +34,7 @@ function Logo() {
 
 export default function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur">
+    <header className="z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur md:sticky md:top-0">
       <div className="container">
         <div className="flex h-16 items-center justify-between">
           <Logo />

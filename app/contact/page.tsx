@@ -23,10 +23,10 @@ export default function Page() {
           <p className="mt-3 text-slate-600">The easiest way to reach us is by email:</p>
           <p className="mt-5">
             <a
-              href="mailto:hello@minutestodecimal.org"
+              href="mailto:rainiee0716@gmail.com"
               className="inline-block rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white no-underline transition hover:bg-brand-700"
             >
-              hello@minutestodecimal.org
+              rainiee0716@gmail.com
             </a>
           </p>
           <p className="mt-5 text-sm leading-relaxed text-muted">
