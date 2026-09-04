@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "How do I convert 30 minutes to decimal?",
-    a: "30 minutes equals 0.5 decimal hours, because 30 ÷ 60 = 0.5. Use the converter above: enter 0 hours and 30 minutes to see it instantly.",
+    a: "30 minutes equals 0.50 decimal hours, because 30 ÷ 60 = 0.50. Use the converter above: enter 0 hours and 30 minutes to see it instantly.",
   },
   {
     q: "What is 1 hour 45 minutes in decimal?",
@@ -25,11 +25,27 @@ const faq = [
   },
   {
     q: "Why do payroll systems use decimal time?",
-    a: "Payroll calculates wages per decimal hour. Converting 1h 30m to 1.5 makes it easy to multiply by an hourly rate. Most timesheets require decimal format.",
+    a: "Payroll calculates wages per decimal hour. Converting 1h 30m to 1.5 makes it easy to multiply by an hourly rate, and it lets every entry in a pay period be added with plain addition. Most timesheets require decimal format for exactly this reason.",
   },
   {
     q: "How do I convert decimal time back to hours and minutes?",
-    a: "Use the right-hand converter. For example, 1.5 decimal hours becomes 1 hour 30 minutes; 2.25 becomes 2 hours 15 minutes.",
+    a: "Use the right-hand converter. For example, 1.5 decimal hours becomes 1 hour 30 minutes; 2.25 becomes 2 hours 15 minutes. The rule is: keep the whole number as hours, multiply the decimal part by 60 to get minutes.",
+  },
+  {
+    q: "What is 15 minutes in decimal?",
+    a: "0.25. A quarter of an hour is 15 minutes, and a quarter as a decimal is 0.25. The four quarter-hour landmarks worth memorizing are 15 minutes = 0.25, 30 = 0.50, 45 = 0.75, and 60 = 1.00.",
+  },
+  {
+    q: "Does 4.35 mean 4 hours 35 minutes?",
+    a: "No. On a decimal timesheet, 4.35 means 4 hours and 0.35 of an hour, which is 21 minutes (0.35 × 60). If you worked 4 hours 35 minutes, the correct decimal entry is 4 + (35 ÷ 60) = 4.58.",
+  },
+  {
+    q: "How do I convert a whole week of times?",
+    a: "Convert each day separately, then add the decimals. A week of 8.00, 7.50, 8.25, 7.75, and 8.00 decimal hours totals 39.50 hours. Multiplying by your rate once at the end gives gross pay.",
+  },
+  {
+    q: "Is decimal time the same as military time?",
+    a: "No. Military time (like 14:30) is a clock time written in 24-hour format. Decimal time is a duration written as hours with a decimal fraction (14:30 as a duration converts to 14.50 decimal hours, but the two systems answer different questions).",
   },
 ];
 
@@ -94,6 +110,34 @@ export default function Home() {
           </p>
         </ProseSection>
 
+        <ProseSection title="Reading the decimal correctly">
+          <p>
+            The part after the decimal point counts sixtieths of an hour, not minutes. So 0.50 is
+            half an hour (30 minutes), and 0.30 is 18 minutes (0.30 × 60), not 30. This is the most
+            common mistake on hand-written time cards: someone who worked 3 hours 20 minutes writes
+            &ldquo;3.20&rdquo; when payroll expects 3.33.
+          </p>
+          <p>
+            A safe habit is to convert first and check second: type your hours and minutes into the
+            converter at the top of this page, then compare what you were about to write with what
+            the tool shows.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="From time card to paycheck">
+          <p>
+            Once every entry is decimal, pay is one multiplication. A week of 8.00, 8.25, 7.75,
+            8.00, and 7.50 decimal hours adds to 39.50 hours; at $20 an hour that is $790.00 gross.
+            Overtime rules kick in past 40 hours in a week for most US hourly jobs, and decimal
+            hours make it obvious when you cross that line.
+          </p>
+          <p>
+            If you fill out a timesheet every pay period, the guides on this site go deeper: how
+            employers round clock times (and what the rules allow), how overtime is calculated from
+            decimal hours, and a full walkthrough of a biweekly timesheet.
+          </p>
+        </ProseSection>
+
         <section className="mx-auto mt-10 max-w-3xl md:mt-14">
           <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">
             Minutes to decimal quick reference
@@ -104,20 +148,35 @@ export default function Home() {
         <FAQList items={faq} />
 
         <RelatedLinks
-          links={[{ href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" }]}
+          links={[
+            { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
+            { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
+            { href: "/guides", label: "Timesheet Guides" },
+          ]}
         />
 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "Minutes to Decimal Converter",
-              applicationCategory: "UtilitiesApplication",
-              operatingSystem: "Any",
-              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-            }),
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                name: "Minutes to Decimal Converter",
+                applicationCategory: "UtilitiesApplication",
+                operatingSystem: "Any",
+                offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faq.map((item) => ({
+                  "@type": "Question",
+                  name: item.q,
+                  acceptedAnswer: { "@type": "Answer", text: item.a },
+                })),
+              },
+            ]),
           }}
         />
       </div>

@@ -27,6 +27,16 @@ export const FOOTER_COLS: {
     ],
   },
   {
+    heading: "Guides",
+    links: [
+      { href: "/guides", label: "All Guides" },
+      { href: "/guides/time-card-rounding", label: "Time Card Rounding Rules" },
+      { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
+      { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
+      { href: "/guides/military-time-on-timesheets", label: "Military Time on Timesheets" },
+    ],
+  },
+  {
     heading: "Company",
     links: [
       { href: "/about", label: "About" },
