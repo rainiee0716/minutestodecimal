@@ -162,6 +162,7 @@ export default function OvertimeDecimalHours() {
           links={[
             { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
             { href: "/guides/time-card-rounding", label: "Time Card Rounding Rules" },
+            { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
           ]}
         />

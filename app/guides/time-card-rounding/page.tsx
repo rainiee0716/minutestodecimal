@@ -152,6 +152,7 @@ export default function TimeCardRounding() {
 
         <RelatedLinks
           links={[
+            { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
             { href: "/decimal-to-hours-calculator", label: "Decimal to Hours Calculator" },
             { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
