@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import ConversionTable from "@/components/ConversionTable";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "How to Fill Out a Biweekly Timesheet: a Complete Walkthrough",
-  description:
-    "A step-by-step guide to biweekly timesheets: recording daily hours, subtracting breaks, converting to decimal hours, handling overtime, and checking your paycheck.",
-  alternates: { canonical: "https://www.minutestodecimal.org/guides/biweekly-timesheet-guide" },
-};
+export const metadata = pageMetadata({
+  title: "Biweekly Timesheet Guide: How to Fill One Out",
+  description: "A step-by-step guide to biweekly timesheets: recording daily hours, subtracting breaks, converting to decimal hours, handling overtime, and checking your paycheck.",
+  path: "/guides/biweekly-timesheet-guide",
+  absoluteTitle: false,
+});
 
 const SAMPLE_WEEK: [string, string][] = [
   ["Mon · 8:15 – 16:45 (30m lunch)", "8.00"],
@@ -23,7 +25,7 @@ export default function BiweeklyTimesheetGuide() {
   return (
     <article>
       <PageHeader
-        title="How to Fill Out a Biweekly Timesheet"
+        title="Biweekly Timesheet Guide"
         description="From clock times to a paycheck: the complete walkthrough, with a worked two-week example."
       />
 
@@ -146,20 +148,21 @@ export default function BiweeklyTimesheetGuide() {
           ]}
         />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: "How to Fill Out a Biweekly Timesheet: a Complete Walkthrough",
-              description:
-                "A step-by-step guide to biweekly timesheets: recording daily hours, subtracting breaks, converting to decimal hours, handling overtime, and checking your paycheck.",
-              author: { "@type": "Organization", name: "minutestodecimal.org" },
-              publisher: { "@type": "Organization", name: "minutestodecimal.org" },
+        <JsonLd
+          data={[
+            articleSchema({
+              headline: "Biweekly Timesheet Guide: How to Fill One Out",
+              description: "A step-by-step guide to biweekly timesheets: recording daily hours, subtracting breaks, converting to decimal hours, handling overtime, and checking your paycheck.",
+              path: "/guides/biweekly-timesheet-guide",
               datePublished: "2026-09-04",
+              dateModified: "2026-09-07",
             }),
-          }}
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Guides", path: "/guides" },
+              { name: "Biweekly Timesheet Guide", path: "/guides/biweekly-timesheet-guide" },
+            ]),
+          ]}
         />
       </div>
     </article>

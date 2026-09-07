@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import UnitConverter from "@/components/UnitConverter";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -8,12 +8,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Decimal to Hours Calculator",
-  description:
-    "Convert decimal hours back into hours and minutes (e.g. 1.75 → 1h 45m). Free, instant tool for reading timesheets and pay stubs.",
-  alternates: { canonical: "https://www.minutestodecimal.org/decimal-to-hours-calculator" },
-};
+  description: "Convert decimal hours back into hours and minutes (e.g. 1.75 \u2192 1h 45m). Free, instant tool for reading timesheets and pay stubs.",
+  path: "/decimal-to-hours-calculator",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

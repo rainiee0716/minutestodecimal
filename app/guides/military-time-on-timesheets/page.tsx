@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import ConversionTable from "@/components/ConversionTable";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Military Time on Timesheets: Reading the 24-Hour Clock",
-  description:
-    "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
-  alternates: { canonical: "https://www.minutestodecimal.org/guides/military-time-on-timesheets" },
-};
+export const metadata = pageMetadata({
+  title: "Military Time on Timesheets: 24-Hour Clock",
+  description: "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
+  path: "/guides/military-time-on-timesheets",
+  absoluteTitle: false,
+});
 
 const MILITARY: [string, string][] = [
   ["0000 / 2400", "12:00 AM (midnight)"],
@@ -154,20 +156,21 @@ export default function MilitaryTimeOnTimesheets() {
           ]}
         />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: "Military Time on Timesheets: Reading the 24-Hour Clock",
-              description:
-                "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
-              author: { "@type": "Organization", name: "minutestodecimal.org" },
-              publisher: { "@type": "Organization", name: "minutestodecimal.org" },
+        <JsonLd
+          data={[
+            articleSchema({
+              headline: "Military Time on Timesheets: 24-Hour Clock",
+              description: "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
+              path: "/guides/military-time-on-timesheets",
               datePublished: "2026-09-04",
+              dateModified: "2026-09-07",
             }),
-          }}
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Guides", path: "/guides" },
+              { name: "Military Time on Timesheets", path: "/guides/military-time-on-timesheets" },
+            ]),
+          ]}
         />
       </div>
     </article>

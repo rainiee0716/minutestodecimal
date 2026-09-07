@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description: "Get in touch with minutestodecimal.org about a tool, a correction, or a suggestion.",
-  alternates: { canonical: "https://www.minutestodecimal.org/contact" },
-};
+  path: "/contact",
+  absoluteTitle: false,
+});
 
 export default function Page() {
   return (

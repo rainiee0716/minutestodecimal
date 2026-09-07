@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -8,12 +8,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Convert Hours to Decimal",
-  description:
-    "Learn to convert hours and minutes to decimal hours by hand, step by step, with a minute-by-minute lookup table and the common mistakes to avoid.",
-  alternates: { canonical: "https://www.minutestodecimal.org/convert-hours-to-decimal" },
-};
+  description: "Learn to convert hours and minutes to decimal hours by hand, step by step, with a minute-by-minute lookup table and the common mistakes to avoid.",
+  path: "/convert-hours-to-decimal",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

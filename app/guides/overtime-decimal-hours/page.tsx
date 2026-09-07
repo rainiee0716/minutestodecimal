@@ -1,21 +1,23 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import Formula from "@/components/Formula";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "How to Calculate Overtime in Decimal Hours",
-  description:
-    "Overtime math with decimal hours: the 40-hour weekly rule, time-and-a-half, worked pay examples, and the mistakes that cost people money.",
-  alternates: { canonical: "https://www.minutestodecimal.org/guides/overtime-decimal-hours" },
-};
+export const metadata = pageMetadata({
+  title: "Overtime in Decimal Hours: How to Calculate It",
+  description: "Overtime math with decimal hours: the 40-hour weekly rule, time-and-a-half, worked pay examples, and the mistakes that cost people money.",
+  path: "/guides/overtime-decimal-hours",
+  absoluteTitle: false,
+});
 
 export default function OvertimeDecimalHours() {
   return (
     <article>
       <PageHeader
-        title="How to Calculate Overtime in Decimal Hours"
+        title="Overtime in Decimal Hours"
         description="The weekly 40-hour rule, time-and-a-half, and worked examples using decimal hours."
       />
 
@@ -164,20 +166,21 @@ export default function OvertimeDecimalHours() {
           ]}
         />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: "How to Calculate Overtime in Decimal Hours",
-              description:
-                "Overtime math with decimal hours: the 40-hour weekly rule, time-and-a-half, worked pay examples, and the mistakes that cost people money.",
-              author: { "@type": "Organization", name: "minutestodecimal.org" },
-              publisher: { "@type": "Organization", name: "minutestodecimal.org" },
+        <JsonLd
+          data={[
+            articleSchema({
+              headline: "Overtime in Decimal Hours: How to Calculate It",
+              description: "Overtime math with decimal hours: the 40-hour weekly rule, time-and-a-half, worked pay examples, and the mistakes that cost people money.",
+              path: "/guides/overtime-decimal-hours",
               datePublished: "2026-09-04",
+              dateModified: "2026-09-07",
             }),
-          }}
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Guides", path: "/guides" },
+              { name: "Overtime in Decimal Hours", path: "/guides/overtime-decimal-hours" },
+            ]),
+          ]}
         />
       </div>
     </article>

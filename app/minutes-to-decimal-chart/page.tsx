@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -7,12 +7,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Minutes to Decimal Conversion Chart",
-  description:
-    "A full minutes-to-decimal chart for payroll and timesheets. See what 15, 20, 30, or 45 minutes equal in decimal hours, plus a free converter.",
-  alternates: { canonical: "https://www.minutestodecimal.org/minutes-to-decimal-chart" },
-};
+  description: "A full minutes-to-decimal chart for payroll and timesheets. See what 15, 20, 30, or 45 minutes equal in decimal hours, plus a free converter.",
+  path: "/minutes-to-decimal-chart",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

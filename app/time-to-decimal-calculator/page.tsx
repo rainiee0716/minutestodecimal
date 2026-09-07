@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -8,12 +8,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Time to Decimal Calculator",
-  description:
-    "Convert a work shift or clock duration into decimal hours for payroll and timesheets. Free, instant, with worked shift examples.",
-  alternates: { canonical: "https://www.minutestodecimal.org/time-to-decimal-calculator" },
-};
+  description: "Convert a work shift or clock duration into decimal hours for payroll and timesheets. Free, instant, with worked shift examples.",
+  path: "/time-to-decimal-calculator",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

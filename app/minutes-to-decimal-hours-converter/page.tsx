@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -8,12 +8,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Minutes to Decimal Hours Converter",
-  description:
-    "Convert a count of minutes into decimal hours for billing, time logs, and payroll. Free, instant, no sign-up required.",
-  alternates: { canonical: "https://www.minutestodecimal.org/minutes-to-decimal-hours-converter" },
-};
+  description: "Convert a count of minutes into decimal hours for billing, time logs, and payroll. Free, instant, no sign-up required.",
+  path: "/minutes-to-decimal-hours-converter",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

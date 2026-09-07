@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeCardRoundingCalculator from "@/components/TimeCardRoundingCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -7,12 +7,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Time Card Rounding Calculator",
-  description:
-    "Round work hours to the nearest 1/100, 1/10, 5, 6, or 15 minutes for payroll. See how 7h 52m rounds under each common rule, plus a free tool.",
-  alternates: { canonical: "https://www.minutestodecimal.org/time-card-rounding-calculator" },
-};
+  description: "Round work hours to the nearest 1/100, 1/10, 5, 6, or 15 minutes for payroll. See how 7h 52m rounds under each common rule, plus a free tool.",
+  path: "/time-card-rounding-calculator",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import ConversionTable from "@/components/ConversionTable";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Time Card Rounding Rules: the 15-Minute and 7-Minute Rules Explained",
-  description:
-    "How employers round clock times to the nearest quarter hour, what the 7-minute rule means, and what federal law allows. With worked examples in decimal hours.",
-  alternates: { canonical: "https://www.minutestodecimal.org/guides/time-card-rounding" },
-};
+export const metadata = pageMetadata({
+  title: "Time Card Rounding Rules: 15 vs 7 Minute Rule",
+  description: "How employers round clock times to the nearest quarter hour, what the 7-minute rule means, and what federal law allows. With worked examples in decimal hours.",
+  path: "/guides/time-card-rounding",
+  absoluteTitle: false,
+});
 
 const ROUNDED: [string, string][] = [
   ["8:01 – 8:07", "8:00"],
@@ -156,20 +158,21 @@ export default function TimeCardRounding() {
           ]}
         />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: "Time Card Rounding Rules: the 15-Minute and 7-Minute Rules Explained",
-              description:
-                "How employers round clock times to the nearest quarter hour, what the 7-minute rule means, and what federal law allows.",
-              author: { "@type": "Organization", name: "minutestodecimal.org" },
-              publisher: { "@type": "Organization", name: "minutestodecimal.org" },
+        <JsonLd
+          data={[
+            articleSchema({
+              headline: "Time Card Rounding Rules: 15 vs 7 Minute Rule",
+              description: "How employers round clock times to the nearest quarter hour, what the 7-minute rule means, and what federal law allows.",
+              path: "/guides/time-card-rounding",
               datePublished: "2026-09-04",
+              dateModified: "2026-09-07",
             }),
-          }}
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Guides", path: "/guides" },
+              { name: "Time Card Rounding Rules", path: "/guides/time-card-rounding" },
+            ]),
+          ]}
         />
       </div>
     </article>

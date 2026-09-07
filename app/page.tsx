@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import AdSlot from "@/components/AdSlot";
 import ProseSection from "@/components/ProseSection";
@@ -7,12 +7,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
-  title: "Minutes to Decimal Converter",
-  description:
-    "Free tool to convert hours and minutes into decimal time for payroll and timesheets. Instant, accurate, no sign-up.",
-  alternates: { canonical: "https://www.minutestodecimal.org/" },
-};
+export const metadata = pageMetadata({
+  title: "Minutes to Decimal Converter \u2014 Free Timesheet Calculator",
+  description: "Free tool to convert hours and minutes into decimal time for payroll and timesheets. Instant, accurate, no sign-up.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 const faq = [
   {

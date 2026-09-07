@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Timesheet Guides",
-  description:
-    "Plain-language guides to timesheet math: rounding rules, overtime in decimal hours, biweekly timesheets, and military time.",
-  alternates: { canonical: "https://www.minutestodecimal.org/guides" },
-};
+  description: "Plain-language guides to timesheet math: rounding rules, overtime in decimal hours, biweekly timesheets, and military time.",
+  path: "/guides",
+  absoluteTitle: false,
+});
 
 const GUIDES = [
   {
@@ -18,13 +20,13 @@ const GUIDES = [
   },
   {
     href: "/guides/overtime-decimal-hours",
-    title: "How to Calculate Overtime in Decimal Hours",
+    title: "Overtime in Decimal Hours",
     description:
       "The 40-hour weekly rule, time-and-a-half math with worked pay examples, state daily-overtime rules, and four mistakes that cost real money.",
   },
   {
     href: "/guides/biweekly-timesheet-guide",
-    title: "How to Fill Out a Biweekly Timesheet",
+    title: "Biweekly Timesheet Guide",
     description:
       "A complete walkthrough: from clock times to decimal hours, week-by-week totals, overtime handling, and auditing the paycheck that follows.",
   },
@@ -72,6 +74,12 @@ export default function GuidesIndex() {
             { href: "/", label: "Minutes to Decimal Converter" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
           ]}
+        />
+        <JsonLd
+          data={breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Guides", path: "/guides" },
+          ])}
         />
       </div>
     </article>

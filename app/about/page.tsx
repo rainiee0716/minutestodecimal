@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
-  description:
-    "minutestodecimal.org builds free, fast time-conversion tools for timesheets, payroll, and everyday scheduling. Who we are and how the content is maintained.",
-  alternates: { canonical: "https://www.minutestodecimal.org/about" },
-};
+  description: "minutestodecimal.org builds free, fast time-conversion tools for timesheets, payroll, and everyday scheduling. Who we are and how the content is maintained.",
+  path: "/about",
+  absoluteTitle: false,
+});
 
 export default function Page() {
   return (

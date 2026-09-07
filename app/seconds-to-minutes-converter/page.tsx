@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import UnitConverter from "@/components/UnitConverter";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -8,12 +8,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Seconds to Minutes Converter",
-  description:
-    "Convert seconds into minutes (e.g. 90s → 1.5 min). Free, instant tool for timers, workouts, and time math.",
-  alternates: { canonical: "https://www.minutestodecimal.org/seconds-to-minutes-converter" },
-};
+  description: "Convert seconds into minutes (e.g. 90s \u2192 1.5 min). Free, instant tool for timers, workouts, and time math.",
+  path: "/seconds-to-minutes-converter",
+  absoluteTitle: false,
+});
 
 const faq = [
   {

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import ProseSection from "@/components/ProseSection";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description: "Privacy policy for minutestodecimal.org.",
-  alternates: { canonical: "https://www.minutestodecimal.org/privacy" },
-};
+  path: "/privacy",
+  absoluteTitle: false,
+});
 
 const linkClass = "font-medium text-brand-600 no-underline transition-colors hover:text-brand-700";
 
@@ -47,6 +48,14 @@ export default function Privacy() {
             <strong>Aggregate statistics.</strong> We may use privacy-friendly analytics that
             report anonymized, aggregate usage data such as country, device type, and pages
             viewed. This data cannot reasonably be used to identify you.
+          </p>
+          <p>
+            <strong>Google Analytics 4.</strong> If enabled, this site may use Google Analytics 4
+            to understand which pages are useful and how visitors move between tools. GA4 may set
+            cookies and collect technical information such as IP address (truncated where
+            applicable), device type, browser, referring page, and page-view events. You can
+            block these cookies through your browser settings or Google’s official opt-out
+            browser add-on.
           </p>
         </ProseSection>
 

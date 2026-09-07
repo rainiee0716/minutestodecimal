@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import TimeDecimalCalculator from "@/components/TimeDecimalCalculator";
 import PageHeader from "@/components/PageHeader";
 import AdSlot from "@/components/AdSlot";
@@ -7,12 +7,12 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Decimal to Minutes Converter",
-  description:
-    "Convert decimal hours to minutes for payroll and timesheets. See what 0.25, 0.5, or 0.75 hours equal in minutes, plus a free converter.",
-  alternates: { canonical: "https://www.minutestodecimal.org/decimal-to-minutes" },
-};
+  description: "Convert decimal hours to minutes for payroll and timesheets. See what 0.25, 0.5, or 0.75 hours equal in minutes, plus a free converter.",
+  path: "/decimal-to-minutes",
+  absoluteTitle: false,
+});
 
 const faq = [
   {
