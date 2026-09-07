@@ -19,6 +19,17 @@ export default function OvertimeDecimalHours() {
         description="The weekly 40-hour rule, time-and-a-half, and worked examples using decimal hours."
       />
 
+      <section className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-black/[0.03] p-5">
+        <h2 className="mb-2 text-base font-semibold text-ink">Key takeaways</h2>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
+          <li>Under the FLSA, hours over 40 in a single workweek are paid at 1.5&times; the regular rate.</li>
+          <li>The 40-hour threshold is per workweek and never resets mid-week or carries into the next one.</li>
+          <li>Decimal hours turn the overtime test into a subtraction: overtime = weekly total &minus; 40.00.</li>
+          <li>Unpaid breaks and lunch are excluded before the 40-hour count.</li>
+          <li>Hours cannot be averaged across weeks to dodge overtime.</li>
+        </ul>
+      </section>
+
       <div className="container pb-16">
         <ProseSection title="The rule in one paragraph">
           <p>

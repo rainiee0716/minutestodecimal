@@ -33,6 +33,17 @@ export default function MilitaryTimeOnTimesheets() {
         description="Reading the 24-hour clock on punch records, and why clock times and decimal hours are different things."
       />
 
+      <section className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-black/[0.03] p-5">
+        <h2 className="mb-2 text-base font-semibold text-ink">Key takeaways</h2>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
+          <li>The 24-hour clock removes AM/PM ambiguity: 1830 is always 6:30 PM.</li>
+          <li>0000&ndash;1200 keep their number (AM); 1300&ndash;2359 subtract 12 for PM; the minutes never change.</li>
+          <li>1430 is a clock time (2:30 PM); 14.30 decimal hours is a duration (14h 18m) &mdash; they are not the same thing.</li>
+          <li>Shifts that cross midnight: count forward past 2400, do not subtract.</li>
+          <li>Write four digits, no colon: 0730, not 7:30. The leading zero matters on night shifts.</li>
+        </ul>
+      </section>
+
       <div className="container pb-16">
         <ProseSection title="Why timesheets use the 24-hour clock">
           <p>

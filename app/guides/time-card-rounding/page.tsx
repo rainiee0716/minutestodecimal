@@ -30,6 +30,16 @@ export default function TimeCardRounding() {
         description="The 15-minute rule, the 7-minute rule, and what federal law allows employers to do with your clock times."
       />
 
+      <section className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-black/[0.03] p-5">
+        <h2 className="mb-2 text-base font-semibold text-ink">Key takeaways</h2>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
+          <li>Rounding snaps each punch to the nearest increment (usually 15 minutes); the 7-minute rule is the boundary.</li>
+          <li>Federal law allows rounding only if it is neutral &mdash; it must favor the employer and the employee equally over time.</li>
+          <li>Rounding can cut either way, so track your own punches and watch for a pattern that always rounds against you.</li>
+          <li>Many modern systems keep the exact time and never round; check your employer&rsquo;s written policy.</li>
+        </ul>
+      </section>
+
       <div className="container pb-16">
         <ProseSection title="What time card rounding is">
           <p>

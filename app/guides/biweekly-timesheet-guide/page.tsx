@@ -27,6 +27,17 @@ export default function BiweeklyTimesheetGuide() {
         description="From clock times to a paycheck: the complete walkthrough, with a worked two-week example."
       />
 
+      <section className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-black/[0.03] p-5">
+        <h2 className="mb-2 text-base font-semibold text-ink">Key takeaways</h2>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
+          <li>A biweekly pay period is 14 days (26 per year); overtime is counted per workweek, not per timesheet.</li>
+          <li>Record each shift as a length first (out minus in, minus unpaid lunch), then convert to decimal hours (minutes &divide; 60 + hours).</li>
+          <li>Total each workweek separately &mdash; only the week that passes 40.00 hours triggers time-and-a-half.</li>
+          <li>Before submitting: week totals should match your schedule, every day stays between 0 and 24 hours, and re-add in minutes if anything looks off.</li>
+          <li>Keep your own copy of every submitted timesheet; the person with the record wins any later pay dispute.</li>
+        </ul>
+      </section>
+
       <div className="container pb-16">
         <ProseSection title="What biweekly actually means">
           <p>
