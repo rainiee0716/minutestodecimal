@@ -149,6 +149,7 @@ export default function Home() {
 
         <RelatedLinks
           links={[
+            { href: "/tools", label: "All Tools" },
             { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
             { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },

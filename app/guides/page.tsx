@@ -71,6 +71,7 @@ export default function GuidesIndex() {
         <RelatedLinks
           title="Tools"
           links={[
+            { href: "/tools", label: "All Tools" },
             { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
             { href: "/", label: "Minutes to Decimal Converter" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
