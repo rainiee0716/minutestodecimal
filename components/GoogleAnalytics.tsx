@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
+import { GA4_MEASUREMENT_ID } from "@/lib/seo";
 import { useEffect } from "react";
 
 declare global {
@@ -12,7 +13,7 @@ declare global {
 }
 
 export default function GoogleAnalytics() {
-  const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  const measurementId = GA4_MEASUREMENT_ID;
   const pathname = usePathname();
 
   useEffect(() => {

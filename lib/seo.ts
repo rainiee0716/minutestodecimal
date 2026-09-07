@@ -7,6 +7,11 @@ export const SITE_NAME = "minutestodecimal.org";
 
 export const OG_IMAGE = `${SITE_URL}/og.png`;
 
+// GA4 Measurement ID is public, so it is safe to keep in source code.
+// The environment variable remains available as an override for future deployments.
+export const GA4_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID ?? "G-BNLGTS6BZJ";
+
 type PageSeoInput = {
   title: string;
   description: string;
