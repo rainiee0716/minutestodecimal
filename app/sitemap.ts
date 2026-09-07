@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/convert-hours-to-decimal`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/minutes-to-decimal-hours-converter`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/minutes-to-decimal-chart`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/decimal-to-minutes`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/time-card-rounding-calculator`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/guides`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/guides/time-card-rounding`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/guides/overtime-decimal-hours`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
