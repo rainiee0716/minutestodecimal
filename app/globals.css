@@ -25,7 +25,8 @@ body {
 }
 
 ::selection {
-  background: #dbeafe;
+  background: #bfdbfe;
+  color: #1e3a8a;
 }
 
 /* details/summary FAQ accordion: hide the default disclosure marker */

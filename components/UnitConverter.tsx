@@ -87,12 +87,12 @@ export default function UnitConverter({ mode }: { mode: Mode }) {
           </label>
         ))}
       </div>
-      <div className="mt-5 rounded-xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-5 text-center">
-        <span className="text-xs font-medium uppercase tracking-wide text-muted">
+      <div className="mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15">
+        <span className="text-xs font-medium uppercase tracking-wide text-brand-100">
           {res.sub ?? "Result"}
         </span>
         <output
-          className="mt-1 block text-4xl font-bold tracking-tight text-brand-700 tabular-nums"
+          className="mt-1 block text-4xl font-bold tracking-tight text-white tabular-nums"
           aria-live="polite"
         >
           {res.value}

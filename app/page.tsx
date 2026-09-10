@@ -72,22 +72,26 @@ export default function Home() {
   return (
     <article>
       {/* Full-bleed hero */}
-      <section className="relative bg-hero-glow bg-no-repeat pb-14 pt-12 md:pb-20 md:pt-20">
-        <div className="container text-center">
-          <span className="inline-block rounded-full border border-brand-200 bg-white px-3 py-1 text-xs font-medium text-brand-700 shadow-card">
+      <section className="relative overflow-hidden bg-hero-dark pb-14 pt-12 md:pb-20 md:pt-20">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-hero-grid bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_0%,#000_35%,transparent_100%)]"
+        />
+        <div className="container relative text-center">
+          <span className="inline-block rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium text-brand-200 shadow-card backdrop-blur">
             Free time card calculator &middot; No sign-up
           </span>
-          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold tracking-tight text-ink md:text-5xl">
+          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold tracking-tight text-white md:text-5xl">
             Minutes to Decimal Converter
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-300">
             Convert hours and minutes into decimal time for payroll, timesheets, and time cards.
             Free, instant, no sign-up.
           </p>
           <div className="mx-auto mt-10 max-w-4xl">
             <TimeDecimalCalculator />
           </div>
-          <p className="mt-6 text-xs text-slate-400">
+          <p className="mt-6 text-xs text-slate-500">
             Runs in your browser &middot; Nothing is sent to a server
           </p>
         </div>

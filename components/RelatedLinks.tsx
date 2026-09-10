@@ -5,7 +5,7 @@ type Props = {
 
 export default function RelatedLinks({ links, title = "Related" }: Props) {
   return (
-    <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-slate-200 bg-white p-5 text-center text-sm shadow-card md:mt-14">
+    <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-brand-100 bg-gradient-to-br from-white to-brand-50/60 p-5 text-center text-sm shadow-card md:mt-14">
       <span className="mr-2 font-medium text-muted">{title}:</span>
       {links.map((link, i) => (
         <span key={link.href}>

@@ -41,6 +41,12 @@ const config: Config = {
         "hero-glow":
           "radial-gradient(60rem 32rem at 50% -12rem, rgb(219 234 254 / 0.9) 0%, rgb(219 234 254 / 0) 70%)",
         "brand-gradient": "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+        "hero-dark":
+          "radial-gradient(52rem 30rem at 72% -12%, rgb(59 130 246 / 0.28) 0%, transparent 60%), radial-gradient(42rem 26rem at 8% 112%, rgb(99 102 241 / 0.2) 0%, transparent 60%), linear-gradient(160deg, #020617 0%, #0f172a 55%, #172554 100%)",
+        "hero-grid":
+          "linear-gradient(rgb(148 163 184 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 0.08) 1px, transparent 1px)",
+        "result-gradient":
+          "linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%)",
       },
     },
   },

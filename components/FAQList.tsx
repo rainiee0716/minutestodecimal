@@ -15,12 +15,12 @@ export default function FAQList({ items, title = "Frequently asked questions" }:
         {items.map((item) => (
           <details
             key={item.q}
-            className="group rounded-xl border border-slate-200 bg-white shadow-card"
+            className="group rounded-xl border border-slate-200 bg-white shadow-card transition-all open:border-brand-300 open:shadow-card-hover"
           >
-            <summary className="flex cursor-pointer select-none items-center justify-between gap-4 px-5 py-4">
-              <h3 className="text-base font-semibold text-ink">{item.q}</h3>
+            <summary className="flex cursor-pointer select-none items-center justify-between gap-4 rounded-xl px-5 py-4 transition-colors hover:bg-brand-50/50">
+              <h3 className="text-base font-semibold text-ink group-open:text-brand-700">{item.q}</h3>
               <svg
-                className="h-4 w-4 shrink-0 text-muted transition-transform group-open:rotate-180"
+                className="h-4 w-4 shrink-0 text-muted transition-transform group-open:rotate-180 group-open:text-brand-600"
                 viewBox="0 0 16 16"
                 fill="none"
                 aria-hidden="true"

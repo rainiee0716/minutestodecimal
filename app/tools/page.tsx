@@ -58,7 +58,7 @@ export default function ToolsPage() {
               <a
                 key={tool.href}
                 href={tool.href}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 no-underline shadow-card transition-colors hover:border-brand-300"
+                className="group rounded-2xl border border-slate-200 bg-white p-6 no-underline shadow-card transition-all hover:-translate-y-1 hover:border-brand-300 hover:shadow-card-hover"
               >
                 <h2 className="text-lg font-semibold text-ink">{tool.label}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
@@ -66,7 +66,7 @@ export default function ToolsPage() {
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 transition-colors group-hover:text-brand-700">
                   Open tool
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </a>
             ))}

@@ -2,7 +2,7 @@ import { FOOTER_COLS } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
-    <footer className="mt-16 bg-slate-900 text-slate-300">
+    <footer className="mt-16 border-t border-brand-900/40 bg-gradient-to-b from-slate-900 to-slate-950 text-slate-300">
       <div className="container">
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>

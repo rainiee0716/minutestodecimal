@@ -34,9 +34,9 @@ const inputClass =
   "h-11 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 text-base transition focus:border-brand-600 focus:bg-white focus:ring-4 focus:ring-brand-500/15 focus:outline-none";
 const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
 const resultBoxClass =
-  "rounded-xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-5 text-center";
-const resultLabelClass = "text-xs font-medium uppercase tracking-wide text-muted";
-const outputClass = "mt-1 block text-3xl font-bold tracking-tight text-brand-700 tabular-nums";
+  "rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15";
+const resultLabelClass = "text-xs font-medium uppercase tracking-wide text-brand-100";
+const outputClass = "mt-1 block text-3xl font-bold tracking-tight text-white tabular-nums";
 
 function timeToMinutes(value: string): number | null {
   if (!value) return null;
