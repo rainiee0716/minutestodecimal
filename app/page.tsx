@@ -157,6 +157,8 @@ export default function Home() {
             { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
             { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
+            { href: "/decimal-to-minutes", label: "Decimal to Minutes" },
             { href: "/guides", label: "Timesheet Guides" },
           ]}
         />

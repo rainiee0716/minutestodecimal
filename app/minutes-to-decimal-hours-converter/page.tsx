@@ -136,6 +136,8 @@ export default function Page() {
           links={[
             { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
+            { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
             { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
           ]}
         />

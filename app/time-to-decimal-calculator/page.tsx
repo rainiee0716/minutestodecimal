@@ -131,6 +131,8 @@ export default function Page() {
           links={[
             { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
             { href: "/guides/military-time-on-timesheets", label: "Military Time on Timesheets" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
+            { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
             { href: "/", label: "Minutes to Decimal Converter" },
           ]}
         />
