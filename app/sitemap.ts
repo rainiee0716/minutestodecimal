@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
 // 站点最近一次内容更新时间，供爬虫判断抓取优先级
-const LAST_MODIFIED = new Date("2026-09-07");
+const LAST_MODIFIED = new Date("2026-09-12");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
