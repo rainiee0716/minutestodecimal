@@ -94,6 +94,17 @@ export default function Page() {
           </p>
         </ProseSection>
 
+        <ProseSection title="Specific minutes, converted">
+          <p>
+            If you came here for one exact value, here are the decimal forms people look up most:
+            20 minutes in decimal is 0.33 (20 ÷ 60 = 0.3333, rounded to two places), 18 minutes in
+            decimal is 0.30 (18 ÷ 60 = 0.30 exactly), and 45 minutes in decimal is 0.75. Other
+            frequent ones are 15 minutes = 0.25, 30 minutes = 0.50, and 90 minutes = 1.50 (1 hour 30
+            minutes). The full 1–60 chart above lists every minute, and the converter at the top
+            handles any number instantly.
+          </p>
+        </ProseSection>
+
         <FAQList items={faq} />
 
         <RelatedLinks
