@@ -133,6 +133,7 @@ export default function Page() {
             { href: "/guides/military-time-on-timesheets", label: "Military Time on Timesheets" },
             { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
             { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
+            { href: "/time-card-rounding-calculator", label: "Time Card Rounding Calculator" },
             { href: "/", label: "Minutes to Decimal Converter" },
           ]}
         />

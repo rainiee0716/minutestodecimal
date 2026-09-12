@@ -159,6 +159,8 @@ export default function Home() {
             { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
             { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
             { href: "/decimal-to-minutes", label: "Decimal to Minutes" },
+            { href: "/time-card-rounding-calculator", label: "Time Card Rounding Calculator" },
+            { href: "/minutes-to-decimal-hours-converter", label: "Minutes to Decimal Hours Converter" },
             { href: "/guides", label: "Timesheet Guides" },
           ]}
         />
