@@ -47,6 +47,14 @@ const faq = [
     q: "Is decimal time the same as military time?",
     a: "No. Military time (like 14:30) is a clock time written in 24-hour format. Decimal time is a duration written as hours with a decimal fraction (14:30 as a duration converts to 14.50 decimal hours, but the two systems answer different questions).",
   },
+  {
+    q: "Is the minutes to decimal converter free?",
+    a: "Yes. Every calculator on the site is free and there is no sign-up. Open the page and start converting - there is no account to create and no email address required.",
+  },
+  {
+    q: "Is my timesheet data uploaded anywhere?",
+    a: "No. The calculators run entirely in your browser, so the times you enter stay on your device and nothing is sent to a server. There is no account, so there is also nothing to sign in to.",
+  },
 ];
 
 const QUICK_REF: [string, string][] = [
