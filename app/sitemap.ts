@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
 // 站点最近一次内容更新时间，供爬虫判断抓取优先级
-const LAST_MODIFIED = new Date("2026-09-12");
+const LAST_MODIFIED = new Date("2026-09-28");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -14,8 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/decimal-to-hours-calculator`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/seconds-to-minutes-converter`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/hours-to-decimal-calculator`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/convert-hours-to-decimal`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/minutes-to-decimal-hours-converter`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/minutes-to-decimal-chart`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/decimal-to-minutes`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/time-card-rounding-calculator`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },

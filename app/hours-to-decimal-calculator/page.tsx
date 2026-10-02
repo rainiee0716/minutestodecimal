@@ -10,7 +10,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 
 export const metadata = pageMetadata({
   title: "Hours to Decimal Calculator",
-  description: "Convert hours and minutes into decimal hours for payroll and timesheets. Free, instant tool with both directions, plus wage and pay-period examples.",
+  description: "Convert hours and minutes into decimal hours for payroll and timesheets. Free, instant, with step-by-step method, lookup tables, and wage examples.",
   path: "/hours-to-decimal-calculator",
   absoluteTitle: false,
 });
@@ -35,6 +35,26 @@ const faq = [
   {
     q: "How many decimal places should I use?",
     a: "Most payroll systems accept two decimal places (7.75), and some time clocks record four (7.7500). Two places is safe for manual timesheets; use four only if your employer asks for it, because 6h 20m is 6.3333 and rounding it to 6.33 loses a third of a minute.",
+  },
+  {
+    q: "How do you convert hours to decimal by hand?",
+    a: "Keep the whole hours aside, divide the minutes by 60, then add the two results. For 5 hours 47 minutes: 47 ÷ 60 = 0.7833, and 5 + 0.7833 = 5.7833 decimal hours. Worked step by step below.",
+  },
+  {
+    q: "Is there a mental shortcut for dividing minutes by 60?",
+    a: "Yes. Dividing by 60 is the same as dividing by 6 and then moving the decimal point one place left. For 42 minutes: 42 ÷ 6 = 7, so 42 minutes is 0.7 of an hour. For 24 minutes: 24 ÷ 6 = 4, so 0.4 of an hour.",
+  },
+  {
+    q: "What are the quarter-hour landmark values worth memorizing?",
+    a: "Four of them cover most timesheet entries: 15 minutes = 0.25, 30 minutes = 0.50, 45 minutes = 0.75, and a full hour = 1.00. If your shift is 6h 45m you can write 6.75 without any division.",
+  },
+  {
+    q: "What do I do with repeating decimals like 20 ÷ 60?",
+    a: "Round to two decimal places for a manual timesheet (0.3333 becomes 0.33) or to four places if your system records them (3.3333). Over one shift the difference is under a minute; payroll systems that track four places do it so tiny remainders add up fairly across a pay period.",
+  },
+  {
+    q: "How do I convert seconds as well as minutes?",
+    a: "Convert seconds to minutes first by dividing by 60, then fold the result into the minutes before dividing by 60 again. For 2h 45m 30s: 30 seconds is 0.5 minutes, so you have 2h 45.5m, which is 2 + (45.5 ÷ 60) = 2.7583 decimal hours.",
   },
   {
     q: "Should I round my time entries before or after converting?",
@@ -86,6 +106,22 @@ const CONVERSIONS: [string, string][] = [
   ["8h 00m", "8.00"],
 ];
 
+// Five-minute minute-counts across one hour, for hand conversion without a tool.
+const MINUTE_CONVERSIONS: [string, string][] = [
+  ["5 minutes", "0.0833"],
+  ["10 minutes", "0.1667"],
+  ["15 minutes", "0.2500"],
+  ["20 minutes", "0.3333"],
+  ["25 minutes", "0.4167"],
+  ["30 minutes", "0.5000"],
+  ["35 minutes", "0.5833"],
+  ["40 minutes", "0.6667"],
+  ["45 minutes", "0.7500"],
+  ["50 minutes", "0.8333"],
+  ["55 minutes", "0.9167"],
+  ["60 minutes", "1.0000"],
+];
+
 export default function Page() {
   return (
     <article>
@@ -112,6 +148,34 @@ export default function Page() {
           <p>
             Two more examples. A shift of 8 hours 45 minutes is 8 + (45 ÷ 60) = 8.75. A short
             3-hour 20-minute shift is 3 + (20 ÷ 60) = 3.3333, usually rounded to 3.33.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="A worked example, step by step">
+          <p>
+            Say your time card shows <strong>5 hours 47 minutes</strong> and payroll wants a decimal.
+          </p>
+          <p>
+            Step 1: set the hours aside. You will add them back at the end, so remember the 5.
+            Step 2: divide the minutes by 60. On paper, 47 ÷ 60 = 0.7833 (the calculator on this
+            page shows four decimal places). Step 3: add the hours back: 5 + 0.7833 = 5.7833.
+          </p>
+          <p>
+            Most timesheets only want two places, so write 5.78. Check it in the converter above by
+            entering 5 and 47: you get the same 5.7833 before rounding.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="The mistake almost everyone makes once">
+          <p>
+            Decimal hours count fractions of an hour in <em>tenths</em>, not in minutes. So 0.30 of
+            an hour is 18 minutes (0.30 × 60), not 30. If you mean &ldquo;2 hours and 30
+            minutes,&rdquo; the decimal is 2.50, because 30 ÷ 60 = 0.50.
+          </p>
+          <p>
+            A quick self-check: whole quarter hours always end in .00, .25, .50, or .75. So 2 hours
+            30 minutes must be written 2.50. The entry 2.30 is still a legal value, but it means
+            something different: 2 hours and 18 minutes (0.30 × 60 = 18).
           </p>
         </ProseSection>
 
@@ -144,14 +208,25 @@ export default function Page() {
           />
         </section>
 
+        <section className="mt-10 md:mt-14">
+          <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">
+            Minutes to decimal lookup table
+          </h2>
+          <ConversionTable fromHeader="Minutes" toHeader="Decimal hours" rows={MINUTE_CONVERSIONS} />
+          <p className="mx-auto mt-4 max-w-3xl text-center text-sm text-muted">
+            For minute counts not in the table, divide by 60, or just enter the full hours and
+            minutes in the converter above.
+          </p>
+        </section>
+
         <FAQList items={faq} />
 
         <RelatedLinks
           links={[
             { href: "/guides/time-card-rounding", label: "Time Card Rounding Rules" },
             { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
-            { href: "/convert-hours-to-decimal", label: "Convert Hours to Decimal" },
-            { href: "/minutes-to-decimal-hours-converter", label: "Minutes to Decimal Hours" },
+            { href: "/", label: "Minutes to Decimal Converter" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
           ]}
         />
 

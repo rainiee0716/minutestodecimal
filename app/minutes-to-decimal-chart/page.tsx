@@ -109,7 +109,7 @@ export default function Page() {
 
         <RelatedLinks
           links={[
-            { href: "/minutes-to-decimal-hours-converter", label: "Minutes to Decimal Hours Converter" },
+            { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
             { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
             { href: "/guides/time-card-rounding", label: "Time Card Rounding Guide" },
             { href: "/", label: "Minutes to Decimal Converter" },

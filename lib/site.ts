@@ -28,17 +28,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
       {
         href: "/hours-to-decimal-calculator",
         label: "Hours to Decimal Calculator",
-        description: "Convert hours and minutes into decimal hours.",
-      },
-      {
-        href: "/minutes-to-decimal-hours-converter",
-        label: "Minutes to Decimal Hours Converter",
-        description: "Convert a count of minutes into decimal hours.",
-      },
-      {
-        href: "/convert-hours-to-decimal",
-        label: "Convert Hours to Decimal",
-        description: "Step-by-step hours-to-decimal conversion guide and tool.",
+        description: "Convert hours and minutes into decimal hours, step by step or by tool.",
       },
       {
         href: "/decimal-to-hours-calculator",
@@ -94,6 +84,17 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
       },
     ],
   },
+  {
+    heading: "Minutes-only conversions",
+    description: "For timers and logs that report plain minute counts.",
+    links: [
+      {
+        href: "/minutes-to-hours-converter",
+        label: "Minutes to Hours Converter",
+        description: "Convert minutes into decimal hours or hours and minutes.",
+      },
+    ],
+  },
 ];
 
 export const HEADER_NAV = [
@@ -127,6 +128,7 @@ export const FOOTER_COLS: {
       { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
       { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
       { href: "/time-card-rounding-calculator", label: "Time Card Rounding Calculator" },
+      { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
     ],
   },
   {
