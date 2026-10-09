@@ -223,10 +223,10 @@ export default function Page() {
 
         <RelatedLinks
           links={[
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
             { href: "/guides/time-card-rounding", label: "Time Card Rounding Rules" },
             { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
             { href: "/", label: "Minutes to Decimal Converter" },
-            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
           ]}
         />
 

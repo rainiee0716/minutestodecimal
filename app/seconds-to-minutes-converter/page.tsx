@@ -41,6 +41,18 @@ const faq = [
     a: "1,000 ÷ 60 = 16.6667 minutes, or 16 minutes 40 seconds. This kind of value comes up constantly with interval timers and video timestamps.",
   },
   {
+    q: "How many minutes is 600 seconds?",
+    a: "600 seconds = 10 minutes exactly (600 ÷ 60 = 10). It is one of the round values: 300 seconds is 5 minutes, 600 is 10, 900 is 15, and 1,800 is 30.",
+  },
+  {
+    q: "How many minutes is 900 seconds?",
+    a: "900 seconds = 15 minutes exactly (900 ÷ 60 = 15). A 900-second timer is a quarter of an hour.",
+  },
+  {
+    q: "How many minutes is 300 seconds?",
+    a: "300 seconds = 5 minutes exactly (300 ÷ 60 = 5).",
+  },
+  {
     q: "How do I convert something like 2m 45s into decimal minutes?",
     a: "The seconds are the only part that changes: 45 ÷ 60 = 0.75, so 2m 45s is 2.75 decimal minutes. It is the same divide-by-60 pattern used everywhere else on this site, just one unit smaller.",
   },
@@ -117,6 +129,21 @@ export default function Page() {
           </p>
         </ProseSection>
 
+        <ProseSection title="The exact values people look up most">
+          <p>
+            <strong>90 seconds is 1.5 minutes</strong> (90 ÷ 60 = 1.5) — the classic workout
+            interval. <strong>300 seconds is 5 minutes</strong> exactly.{" "}
+            <strong>600 seconds is 10 minutes</strong> exactly.{" "}
+            <strong>900 seconds is 15 minutes</strong> exactly, and{" "}
+            <strong>1,000 seconds is 16 minutes 40 seconds</strong>, or 16.67 decimal minutes
+            (1,000 ÷ 60 = 16.6667).
+          </p>
+          <p>
+            Values that are multiples of 60 come out clean; everything else carries a decimal.
+            The converter above gives the exact answer for any of them the moment you type.
+          </p>
+        </ProseSection>
+
         <ProseSection title="Pace, splits, and intervals">
           <p>
             Runners and swimmers live in seconds. A 400-meter repeat at 92 seconds is 1.53 decimal
@@ -146,6 +173,8 @@ export default function Page() {
           links={[
             { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
             { href: "/hours-to-minutes-calculator", label: "Hours to Minutes Calculator" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
+            { href: "/", label: "Minutes to Decimal Converter" },
             { href: "/guides", label: "Timesheet Guides" },
           ]}
         />

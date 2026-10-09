@@ -8,8 +8,8 @@ import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
 export const metadata = pageMetadata({
-  title: "Minutes to Decimal Conversion Chart",
-  description: "A full minutes-to-decimal chart for payroll and timesheets. See what 15, 20, 30, or 45 minutes equal in decimal hours, plus a free converter.",
+  title: "Minutes to Decimal Chart (1–60)",
+  description: "Full minutes to decimal chart for payroll: every minute 1–60 as decimal hours, with the common values (15, 20, 30, 45) answered directly. Printable, plus a free converter.",
   path: "/minutes-to-decimal-chart",
   absoluteTitle: false,
 });
@@ -36,8 +36,28 @@ const faq = [
     a: "30 minutes = 0.50 decimal hours (30 ÷ 60 = 0.50).",
   },
   {
+    q: "What is 25 minutes in decimal?",
+    a: "25 minutes = 0.42 decimal hours. The exact value is 25 ÷ 60 = 0.4167, which rounds to 0.42 on a two-place timesheet.",
+  },
+  {
+    q: "What is 40 minutes in decimal?",
+    a: "40 minutes = 0.67 decimal hours (40 ÷ 60 = 0.6667, rounded to 0.67).",
+  },
+  {
+    q: "What is 50 minutes in decimal?",
+    a: "50 minutes = 0.83 decimal hours (50 ÷ 60 = 0.8333, rounded to 0.83).",
+  },
+  {
+    q: "What is 35 minutes in decimal?",
+    a: "35 minutes = 0.58 decimal hours (35 ÷ 60 = 0.5833, rounded to 0.58).",
+  },
+  {
     q: "How do you convert minutes to decimal?",
     a: "Divide the minutes by 60. For example, to convert 20 minutes to decimal hours: 20 ÷ 60 = 0.33. The converter above does this for any value, and the chart below lists every minute from 1 to 60.",
+  },
+  {
+    q: "Can I print this minutes to decimal chart?",
+    a: "Yes. The chart prints cleanly on one page: use your browser's print command and it renders as a simple two-column table. Many people keep a copy taped near the time clock or inside a timesheet folder.",
   },
   {
     q: "Why does payroll use decimal minutes instead of 20m?",
@@ -91,6 +111,31 @@ export default function Page() {
             A few values show up constantly on timesheets, so they are worth memorizing: 15 minutes
             = 0.25, 20 minutes = 0.33, 30 minutes = 0.50, and 45 minutes = 0.75. When a shift has an
             odd length, the chart above or the converter handles it exactly.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="The most-looked-up values, answered directly">
+          <p>
+            <strong>20 minutes in decimal is 0.33</strong> (20 ÷ 60 = 0.3333, rounded to two
+            places). <strong>25 minutes in decimal is 0.42</strong> (0.4167 exact).{" "}
+            <strong>40 minutes in decimal is 0.67</strong> (0.6667 exact).{" "}
+            <strong>45 minutes in decimal is 0.75</strong> — one of the cleanest values on the
+            whole chart. <strong>50 minutes in decimal is 0.83</strong> (0.8333 exact), and{" "}
+            <strong>35 minutes in decimal is 0.58</strong> (0.5833 exact).
+          </p>
+          <p>
+            Every other minute from 1 to 60 is in the chart above, and the converter at the top of
+            this page handles values beyond an hour — 90 minutes is 1.50, for example, because the
+            whole hours carry over.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="Printable and pin-ready">
+          <p>
+            The 1–60 table above prints on a single page from any browser (File → Print, or
+            Ctrl/Cmd + P). The two-column layout comes out clean without ads or navigation, which is
+            why many people keep a copy taped near the time clock, inside a timesheet binder, or on
+            the fridge door of a break room.
           </p>
         </ProseSection>
 
