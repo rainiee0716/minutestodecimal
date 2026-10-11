@@ -17,8 +17,24 @@ export const metadata = pageMetadata({
 
 const faq = [
   {
-    q: "What is 1.75 decimal hours in hours and minutes?",
-    a: "1.75 hours = 1 hour 45 minutes. The 0.75 of an hour is 45 minutes (0.75 × 60 = 45). Enter 1.75 above to confirm.",
+    q: "What is 1.75 in hours?",
+    a: "1.75 decimal hours is 1 hour 45 minutes. The whole number 1 is the hours, and 0.75 × 60 = 45 minutes. Enter 1.75 above to confirm.",
+  },
+  {
+    q: "What is 2.5 hours in hours and minutes?",
+    a: "2.5 hours = 2 hours 30 minutes (0.5 × 60 = 30). It is a common value on pay stubs for a two-and-a-half-hour shift or meeting block.",
+  },
+  {
+    q: "What is 0.3 hours?",
+    a: "0.3 hours is 18 minutes (0.3 × 60 = 18). Note it is not 30 minutes — thirty minutes is 0.50 decimal hours.",
+  },
+  {
+    q: "What is 1.5 hours in hours and minutes?",
+    a: "1.5 hours = 1 hour 30 minutes. Half an hour is 0.50, so any x.5 value is x hours plus exactly 30 minutes.",
+  },
+  {
+    q: "What is 3.5 hours in hours and minutes?",
+    a: "3.5 hours = 3 hours 30 minutes, the same pattern as 1.5 and 2.5: the .5 after the point is always 30 minutes.",
   },
   {
     q: "How do I read 2.25 hours?",
@@ -52,11 +68,14 @@ const faq = [
 
 const CONVERSIONS: [string, string][] = [
   ["0.25 hours", "0h 15m"],
+  ["0.30 hours", "0h 18m"],
   ["0.50 hours", "0h 30m"],
   ["0.75 hours", "0h 45m"],
   ["1.20 hours", "1h 12m"],
+  ["1.50 hours", "1h 30m"],
   ["1.75 hours", "1h 45m"],
   ["2.25 hours", "2h 15m"],
+  ["2.50 hours", "2h 30m"],
   ["3.60 hours", "3h 36m"],
   ["6.50 hours", "6h 30m"],
   ["7.67 hours", "7h 40m"],
@@ -86,6 +105,25 @@ export default function Page() {
           <p>
             So 1.75 becomes 1 hour and 45 minutes. This is the reverse of the decimal conversion
             used on timesheets.
+          </p>
+        </ProseSection>
+
+        <ProseSection title="The exact values people look up most">
+          <p>
+            <strong>1.75 in hours is 1 hour 45 minutes</strong> — probably the single most-looked-up
+            decimal on pay stubs. <strong>1.5 hours is 1 hour 30 minutes</strong>.{" "}
+            <strong>2.5 hours is 2 hours 30 minutes</strong>. <strong>0.75 hours is 45
+            minutes</strong>, <strong>0.5 hours is 30 minutes</strong>, and{" "}
+            <strong>0.25 hours is 15 minutes</strong>.
+          </p>
+          <p>
+            One value trips people up: <strong>0.3 hours is 18 minutes</strong>, not 30 — the part
+            after the point counts sixtieths of an hour, so multiply it by 60. Thirty minutes as a
+            decimal is 0.50.
+          </p>
+          <p>
+            Any value ending in .25, .50, or .75 converts on sight (15, 30, or 45 minutes).
+            Everything else, type into the converter above.
           </p>
         </ProseSection>
 
@@ -128,8 +166,9 @@ export default function Page() {
 
         <RelatedLinks
           links={[
+            { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
             { href: "/", label: "Minutes to Decimal Converter" },
-            { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
+            { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
             { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
           ]}
         />
