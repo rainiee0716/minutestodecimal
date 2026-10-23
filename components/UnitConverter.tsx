@@ -4,6 +4,8 @@ import { useState } from "react";
 
 type Mode = "hoursToMinutes" | "minutesToHours" | "decimalToHours" | "secondsToMinutes";
 
+export type { Mode as ConverterMode };
+
 type Cfg = {
   title: string;
   formula: string;
@@ -55,9 +57,15 @@ const inputClass =
   "h-12 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 text-lg transition focus:border-brand-600 focus:bg-white focus:ring-4 focus:ring-brand-500/15 focus:outline-none";
 const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
 
-export default function UnitConverter({ mode }: { mode: Mode }) {
+export default function UnitConverter({
+  mode,
+  defaults,
+}: {
+  mode: Mode;
+  defaults?: Record<string, string>;
+}) {
   const cfg = MODES[mode];
-  const [vals, setVals] = useState<Record<string, string>>(cfg.defaults);
+  const [vals, setVals] = useState<Record<string, string>>({ ...cfg.defaults, ...defaults });
   const numeric = Object.fromEntries(
     cfg.inputs.map((i) => [i.key, parseFloat(vals[i.key]) || 0])
   );
