@@ -9,6 +9,55 @@
 
 import type { ConverterMode } from "@/components/UnitConverter";
 
+// ---------------------------------------------------------------------------
+// 数值页白名单（哥飞体检 2026-10-23：按真实月搜索量只保留 6 页，其余 301 回聚合页）
+// 同构模板页会稀释全站权重（页面数是分母），长尾需求由 chart/converter 聚合页承接。
+
+export const KEEPER_SLUGS = [
+  "20-minutes-in-decimal",   // 9,900/月
+  "45-minutes-in-decimal",   // 8,100/月
+  "10-minutes-in-decimal",   // 6,600/月
+  "90-seconds-to-minutes",   // 4,400/月
+  "30-minutes-in-decimal",   // 2,900/月
+  "600-seconds-to-minutes",  // 2,400/月
+] as const;
+
+// 非白名单 slug 的 301 归宿：把权重集中到各簇的强位页面
+export const HUB_BY_FAMILY: Record<LongtailPage["family"], string> = {
+  minutesInDecimal: "/minutes-to-decimal-chart",        // 平均排名 12.2 的全站最好资产
+  hmInDecimal: "/minutes-to-decimal-chart",
+  secondsToMinutes: "/seconds-to-minutes-converter",    // 90s 词排 11.4、600s 词排 13.1 的载体
+  hoursInMinutes: "/decimal-to-hours-calculator",
+};
+
+// 每个保留页独有的内容：只换数字的页面删了比留着好（哥飞 P1.5）
+export const KEEPER_NOTES: Record<string, { title: string; text: string }> = {
+  "20-minutes-in-decimal": {
+    title: "20 minutes on a real timesheet",
+    text: "Twenty minutes is the classic \"third of an hour\" entry: 0.33 on a two-decimal timesheet, 0.3333 unrounded. It is also one of the values most affected by rounding rules — under the common 7-minute rule, a 20-minute block rounds down to 15 minutes (0.25), so the same shift can log as 0.25 or 0.33 depending on your employer's system. If you track your own hours, write 0.33 and let payroll apply its own rounding.",
+  },
+  "45-minutes-in-decimal": {
+    title: "45 minutes: where rounding lands",
+    text: "Forty-five minutes is 0.75 decimal hours and the most common landing spot of the 7-minute rounding rule: any check-in between 38 and 52 minutes past the hour rounds to 45. It is also one of only four values (0.25, 0.50, 0.75, 1.00) that a quarter-hour timesheet can record at all, which is why it shows up so often in payroll corrections.",
+  },
+  "10-minutes-in-decimal": {
+    title: "10-minute blocks and billing increments",
+    text: "Ten minutes is 0.1667 decimal hours, and the base unit for timesheets tracked in 10-minute increments — common in home care and field service. Legal work often goes finer, billing in 6-minute (0.1-hour) increments, where a 10-minute task logs as 0.2. Six 10-minute blocks make exactly 1.00 hour, so scattered short tasks add up cleanly.",
+  },
+  "30-minutes-in-decimal": {
+    title: "30 minutes: the anchor everyone knows",
+    text: "Half an hour is 0.50 decimal hours — the one conversion most people can do in their head, and the anchor for estimating all the others (15 is half of it, 45 is one and a half). It is also the standard unpaid meal-break length in several US states after 5–6 hours of work, making it the most common deduction line on a timesheet.",
+  },
+  "90-seconds-to-minutes": {
+    title: "90 seconds in practice",
+    text: "Ninety seconds is 1.5 minutes — the default work interval in HIIT timers, a common plank or stretch hold, and the classic \"elevator pitch\" length. Timers display it as 1:30, and apps that sum intervals in seconds need 90 ÷ 60 = 1.5. Ten 90-second rounds with 30-second rests total exactly 20 minutes.",
+  },
+  "600-seconds-to-minutes": {
+    title: "600 seconds in practice",
+    text: "Six hundred seconds is exactly 10 minutes — one of the round conversions with no decimals at all. It is the classic timer preset: laundry cycles, meditation, egg boiling, and many a pomodoro variant. Because 600 ÷ 60 comes out clean, it is a good sanity check when testing a converter or a timesheet formula.",
+  },
+};
+
 export type LongtailPage = {
   slug: string;
   family: "minutesInDecimal" | "secondsToMinutes" | "hoursInMinutes" | "hmInDecimal";
@@ -155,9 +204,9 @@ export function minutesPage(n: number): LongtailPage {
       { href: "/", label: "Minutes to Decimal Converter" },
       { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart (1–60)" },
       { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
-      ...(n !== 30 ? [{ href: "/30-minutes-in-decimal", label: "30 Minutes in Decimal" }] : []),
-      ...(n !== 45 ? [{ href: "/45-minutes-in-decimal", label: "45 Minutes in Decimal" }] : []),
-      ...(n !== 90 ? [{ href: "/90-minutes-in-decimal", label: "90 Minutes in Decimal" }] : []),
+      ...(["10", "20", "30", "45"] as const)
+        .filter((k) => k !== String(n))
+        .map((k) => ({ href: `/${k}-minutes-in-decimal`, label: `${k} Minutes in Decimal` })),
     ],
     breadcrumb: [
       { name: "Home", href: "/" },
@@ -263,8 +312,8 @@ export function secondsPage(n: number): LongtailPage {
     ],
     related: [
       { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
-      { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" },
-      { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" },
+      ...(n !== 90 ? [{ href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" }] : []),
+      ...(n !== 600 ? [{ href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" }] : []),
       { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
       { href: "/", label: "Minutes to Decimal Converter" },
     ],
@@ -483,12 +532,6 @@ export function parseLongtailSlug(slug: string): LongtailPage | null {
 }
 
 export function allLongtailSlugs(): string[] {
-  const slugs: string[] = [];
-  for (let n = 1; n <= 600; n++) slugs.push(`${n}-minutes-in-decimal`);
-  for (let n = 1; n <= 600; n++) slugs.push(`${n}-seconds-to-minutes`);
-  for (const n of SECONDS_SPECIALS) slugs.push(`${n}-seconds-to-minutes`);
-  for (let i = 1; i <= 160; i++) slugs.push(`${i * 0.25}-hours-in-minutes`);
-  for (let h = 1; h <= 20; h++)
-    for (let mm = 5; mm <= 55; mm += 5) slugs.push(`${h}-hours-${mm}-minutes-in-decimal`);
-  return slugs;
+  // 只生成白名单内的页面，其余家族 slug 由路由层 301 回聚合页
+  return [...KEEPER_SLUGS];
 }

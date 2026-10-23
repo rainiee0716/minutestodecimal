@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { allLongtailSlugs, parseLongtailSlug } from "@/lib/longtail";
+import { notFound, permanentRedirect } from "next/navigation";
+import {
+  KEEPER_NOTES,
+  KEEPER_SLUGS,
+  HUB_BY_FAMILY,
+  allLongtailSlugs,
+  parseLongtailSlug,
+} from "@/lib/longtail";
 import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import UnitConverter from "@/components/UnitConverter";
@@ -11,8 +17,7 @@ import ConversionTable from "@/components/ConversionTable";
 import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
-// 只允许预生成的 slug，未匹配的直接 404，不与任何静态路由冲突
-export const dynamicParams = false;
+const KEEPERS: readonly string[] = KEEPER_SLUGS;
 
 export function generateStaticParams() {
   return allLongtailSlugs().map((slug) => ({ slug }));
@@ -23,6 +28,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
+  if (!KEEPERS.includes(params.slug)) return {};
   const page = parseLongtailSlug(params.slug);
   if (!page) return {};
   return pageMetadata({
@@ -35,6 +41,13 @@ export async function generateMetadata({
 export default function LongtailPage({ params }: { params: { slug: string } }) {
   const page = parseLongtailSlug(params.slug);
   if (!page) notFound();
+
+  // 白名单之外的同族 slug 一律 301 回聚合页：不再一值一页，权重集中（哥飞 P0/P1）
+  if (!KEEPERS.includes(params.slug)) {
+    permanentRedirect(HUB_BY_FAMILY[page.family]);
+  }
+
+  const note = KEEPER_NOTES[params.slug];
 
   return (
     <article>
@@ -55,6 +68,12 @@ export default function LongtailPage({ params }: { params: { slug: string } }) {
             {si === 0 && <Formula>{page.formula}</Formula>}
           </ProseSection>
         ))}
+
+        {note && (
+          <ProseSection title={note.title}>
+            <p>{note.text}</p>
+          </ProseSection>
+        )}
 
         <section className="mt-10 md:mt-14">
           <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">

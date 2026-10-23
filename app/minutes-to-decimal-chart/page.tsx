@@ -156,13 +156,9 @@ export default function Page() {
           title="Popular specific conversions"
           links={[
             { href: "/20-minutes-in-decimal", label: "20 Minutes in Decimal" },
-            { href: "/18-minutes-in-decimal", label: "18 Minutes in Decimal" },
-            { href: "/15-minutes-in-decimal", label: "15 Minutes in Decimal" },
-            { href: "/30-minutes-in-decimal", label: "30 Minutes in Decimal" },
             { href: "/45-minutes-in-decimal", label: "45 Minutes in Decimal" },
-            { href: "/50-minutes-in-decimal", label: "50 Minutes in Decimal" },
-            { href: "/90-minutes-in-decimal", label: "90 Minutes in Decimal" },
-            { href: "/2-hours-45-minutes-in-decimal", label: "2 Hours 45 Minutes in Decimal" },
+            { href: "/10-minutes-in-decimal", label: "10 Minutes in Decimal" },
+            { href: "/30-minutes-in-decimal", label: "30 Minutes in Decimal" },
           ]}
         />
 

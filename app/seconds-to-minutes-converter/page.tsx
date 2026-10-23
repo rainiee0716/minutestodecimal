@@ -174,12 +174,8 @@ export default function Page() {
         <RelatedLinks
           title="Popular specific conversions"
           links={[
-            { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" },
-            { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" },
-            { href: "/300-seconds-to-minutes", label: "300 Seconds to Minutes" },
-            { href: "/900-seconds-to-minutes", label: "900 Seconds to Minutes" },
-            { href: "/1800-seconds-to-minutes", label: "1800 Seconds to Minutes" },
-            { href: "/3600-seconds-to-minutes", label: "3600 Seconds to Minutes" },
+            { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes (1.5 min)" },
+            { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes (10 min)" },
           ]}
         />
 
