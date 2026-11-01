@@ -7,25 +7,29 @@ import JsonLd from "@/components/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMetadata({
-  title: "Military Time on Timesheets: 24-Hour Clock",
-  description: "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
+  title: "Military Time on Timesheets: 24-Hour Clock & Conversion Chart",
+  description: "Military time chart for timesheets: every 24-hour clock time from 0000 to 2400 in 12-hour form (1730, 1830, 1430 and more), plus how to convert punch times to decimal hours.",
   path: "/guides/military-time-on-timesheets",
   absoluteTitle: false,
 });
 
-const MILITARY: [string, string][] = [
-  ["0000 / 2400", "12:00 AM (midnight)"],
-  ["0100", "1:00 AM"],
-  ["0630", "6:30 AM"],
-  ["0900", "9:00 AM"],
-  ["1130", "11:30 AM"],
-  ["1200", "12:00 PM (noon)"],
-  ["1230", "12:30 PM"],
-  ["1500", "3:00 PM"],
-  ["1730", "5:30 PM"],
-  ["2100", "9:00 PM"],
-  ["2345", "11:45 PM"],
-];
+// 完整半小时步进表：0000–2330 每个整点与半点，末尾附 2400。
+// 覆盖 GSC 真实查询形态（"1430/1730/1830/2230 military time" 等）。
+const to12 = (h: number, m: number): string => {
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`;
+};
+const MILITARY: [string, string][] = [];
+for (let h = 0; h <= 23; h++) {
+  for (const m of [0, 30]) {
+    const label = `${String(h).padStart(2, "0")}${String(m).padStart(2, "0")}`;
+    let v = to12(h, m);
+    if (h === 0 && m === 0) v = "12:00 AM (midnight)";
+    if (h === 12 && m === 0) v = "12:00 PM (noon)";
+    MILITARY.push([label, v]);
+  }
+}
+MILITARY.push(["2400", "12:00 AM (midnight, end of day)"]);
 
 export default function MilitaryTimeOnTimesheets() {
   return (
@@ -150,20 +154,22 @@ export default function MilitaryTimeOnTimesheets() {
 
         <RelatedLinks
           links={[
-            { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
-            { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
+            { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
             { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
+            { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },
+            { href: "/guides/overtime-decimal-hours", label: "Overtime in Decimal Hours" },
+            { href: "/guides/biweekly-timesheet-guide", label: "Biweekly Timesheet Guide" },
           ]}
         />
 
         <JsonLd
           data={[
             articleSchema({
-              headline: "Military Time on Timesheets: 24-Hour Clock",
-              description: "How 24-hour clock times work on timesheets, how to convert them to and from 12-hour time, and why clock times and decimal hours are not the same thing.",
+              headline: "Military Time on Timesheets: 24-Hour Clock & Conversion Chart",
+              description: "Military time chart for timesheets: every 24-hour clock time from 0000 to 2400 in 12-hour form, plus how to convert punch times to decimal hours.",
               path: "/guides/military-time-on-timesheets",
               datePublished: "2026-09-04",
-              dateModified: "2026-09-07",
+              dateModified: "2026-11-01",
             }),
             breadcrumbSchema([
               { name: "Home", path: "/" },
