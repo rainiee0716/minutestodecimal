@@ -160,6 +160,18 @@ export default function Home() {
         <FAQList items={faq} />
 
         <RelatedLinks
+          title="Popular conversions"
+          links={[
+            { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" },
+            { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" },
+            { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
+            { href: "/20-minutes-in-decimal", label: "20 Minutes in Decimal" },
+            { href: "/45-minutes-in-decimal", label: "45 Minutes in Decimal" },
+            { href: "/decimal-to-hours-calculator", label: "Decimal to Hours Calculator" },
+          ]}
+        />
+
+        <RelatedLinks
           links={[
             { href: "/tools", label: "All Tools" },
             { href: "/weekly-timesheet-calculator", label: "Weekly Timesheet Calculator" },

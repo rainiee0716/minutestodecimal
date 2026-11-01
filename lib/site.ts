@@ -85,6 +85,42 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     ],
   },
   {
+    heading: "Popular specific conversions",
+    description: "The most-looked-up values, each with its own pre-filled converter and chart.",
+    links: [
+      {
+        href: "/20-minutes-in-decimal",
+        label: "20 Minutes in Decimal",
+        description: "What 20 minutes is in decimal hours (0.33).",
+      },
+      {
+        href: "/45-minutes-in-decimal",
+        label: "45 Minutes in Decimal",
+        description: "What 45 minutes is in decimal hours (0.75).",
+      },
+      {
+        href: "/10-minutes-in-decimal",
+        label: "10 Minutes in Decimal",
+        description: "What 10 minutes is in decimal hours (0.1667).",
+      },
+      {
+        href: "/30-minutes-in-decimal",
+        label: "30 Minutes in Decimal",
+        description: "What 30 minutes is in decimal hours (0.50).",
+      },
+      {
+        href: "/90-seconds-to-minutes",
+        label: "90 Seconds to Minutes",
+        description: "What 90 seconds is in minutes (1.5).",
+      },
+      {
+        href: "/600-seconds-to-minutes",
+        label: "600 Seconds to Minutes",
+        description: "What 600 seconds is in minutes (10).",
+      },
+    ],
+  },
+  {
     heading: "Minutes-only conversions",
     description: "For timers and logs that report plain minute counts.",
     links: [
@@ -127,6 +163,8 @@ export const FOOTER_COLS: {
       { href: "/decimal-to-hours-calculator", label: "Decimal to Hours Calculator" },
       { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
       { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
+      { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" },
+      { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" },
       { href: "/time-card-rounding-calculator", label: "Time Card Rounding Calculator" },
       { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
     ],

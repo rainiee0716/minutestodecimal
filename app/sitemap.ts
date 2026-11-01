@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/seo";
 import { allLongtailSlugs } from "@/lib/longtail";
 
 // 站点最近一次内容更新时间，供爬虫判断抓取优先级
-const LAST_MODIFIED = new Date("2026-10-11");
+const LAST_MODIFIED = new Date("2026-11-01");
 const LONGTAIL_MODIFIED = new Date("2026-10-23");
 
 export default function sitemap(): MetadataRoute.Sitemap {

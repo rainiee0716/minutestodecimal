@@ -166,6 +166,9 @@ export default function Page() {
           links={[
             { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
             { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
+            { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
+            { href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" },
+            { href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" },
             { href: "/guides/time-card-rounding", label: "Time Card Rounding Guide" },
             { href: "/", label: "Minutes to Decimal Converter" },
           ]}
