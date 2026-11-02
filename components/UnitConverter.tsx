@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import CopyButton from "@/components/CopyButton";
+import { trackEvent } from "@/lib/analytics";
 
 type Mode = "hoursToMinutes" | "minutesToHours" | "decimalToHours" | "secondsToMinutes";
 
@@ -71,6 +73,26 @@ export default function UnitConverter({
   );
   const res = cfg.compute(numeric);
 
+  // 换算使用埋点：输入停顿 1.5s 后上报，同一输入串不重复，10s 节流，跳过首屏默认值
+  const seenInput = useRef<string | null>(null);
+  const lastFireAt = useRef(0);
+  useEffect(() => {
+    const key = cfg.inputs.map((i) => vals[i.key] || "").join("|");
+    if (seenInput.current === null) {
+      seenInput.current = key;
+      return;
+    }
+    if (key === seenInput.current) return;
+    const t = setTimeout(() => {
+      if (key === seenInput.current) return;
+      seenInput.current = key;
+      if (Date.now() - lastFireAt.current < 10000) return;
+      lastFireAt.current = Date.now();
+      trackEvent("calculator_used", { mode });
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [vals, cfg.inputs, mode]);
+
   return (
     <section className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-card">
       <h2 className="mb-5 text-xs font-semibold uppercase tracking-wider text-muted">
@@ -95,7 +117,8 @@ export default function UnitConverter({
           </label>
         ))}
       </div>
-      <div className="mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15">
+      <div className="relative mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15">
+        <CopyButton value={res.value} location={mode} />
         <span className="text-xs font-medium uppercase tracking-wide text-brand-100">
           {res.sub ?? "Result"}
         </span>

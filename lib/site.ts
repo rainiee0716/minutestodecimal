@@ -153,6 +153,7 @@ export const FOOTER_COLS: {
       { href: "/time-to-decimal-calculator", label: "Time to Decimal Calculator" },
       { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
       { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
+      { href: "/embed", label: "Embed Widget" },
     ],
   },
   {

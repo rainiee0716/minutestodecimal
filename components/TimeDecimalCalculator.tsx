@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import CopyButton from "@/components/CopyButton";
+import { trackEvent } from "@/lib/analytics";
 
 function toDecimal(h: number, m: number): number {
   return Number((h + m / 60).toFixed(4));
@@ -17,7 +19,7 @@ const inputClass =
   "h-12 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 text-lg transition focus:border-brand-600 focus:bg-white focus:ring-4 focus:ring-brand-500/15 focus:outline-none";
 const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
 const resultBoxClass =
-  "mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15";
+  "relative mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15";
 const resultLabelClass = "text-xs font-medium uppercase tracking-wide text-brand-100";
 const outputClass = "mt-1 block text-4xl font-bold tracking-tight text-white tabular-nums";
 
@@ -28,6 +30,26 @@ export default function TimeDecimalCalculator() {
 
   const [dec2, setDec2] = useState("1.5");
   const { h: h2, m: m2 } = toHm(parseFloat(dec2) || 0);
+
+  // 换算使用埋点：输入停顿 1.5s 后上报，10s 节流，跳过首屏默认值
+  const seenInput = useRef<string | null>(null);
+  const lastFireAt = useRef(0);
+  useEffect(() => {
+    const key = `${h}|${m}|${dec2}`;
+    if (seenInput.current === null) {
+      seenInput.current = key;
+      return;
+    }
+    if (key === seenInput.current) return;
+    const t = setTimeout(() => {
+      if (key === seenInput.current) return;
+      seenInput.current = key;
+      if (Date.now() - lastFireAt.current < 10000) return;
+      lastFireAt.current = Date.now();
+      trackEvent("calculator_used", { location: "home" });
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [h, m, dec2]);
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
@@ -64,6 +86,7 @@ export default function TimeDecimalCalculator() {
           </label>
         </div>
         <div className={resultBoxClass}>
+          <CopyButton value={dec.toFixed(4)} location="home_decimal" />
           <span className={resultLabelClass}>Decimal hours</span>
           <output className={outputClass} aria-live="polite">
             {dec.toFixed(4)}
@@ -89,6 +112,7 @@ export default function TimeDecimalCalculator() {
           />
         </label>
         <div className={resultBoxClass}>
+          <CopyButton value={`${h2}h ${m2}m`} location="home_hm" />
           <span className={resultLabelClass}>Result</span>
           <output className={outputClass} aria-live="polite">
             {h2}h {m2}m

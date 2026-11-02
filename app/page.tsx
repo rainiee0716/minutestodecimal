@@ -181,6 +181,7 @@ export default function Home() {
             { href: "/decimal-to-minutes", label: "Decimal to Minutes" },
             { href: "/time-card-rounding-calculator", label: "Time Card Rounding Calculator" },
             { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
+            { href: "/embed", label: "Embed this calculator" },
             { href: "/guides", label: "Timesheet Guides" },
           ]}
         />
