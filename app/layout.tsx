@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import AiReferralTracker from "@/components/AiReferralTracker";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/seo";
 import "./globals.css";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col">
         <GoogleAnalytics />
+        <AiReferralTracker />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         {ADSENSE_CLIENT && (
