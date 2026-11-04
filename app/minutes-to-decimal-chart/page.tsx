@@ -132,10 +132,24 @@ export default function Page() {
 
         <ProseSection title="Printable and pin-ready">
           <p>
-            The 1–60 table above prints on a single page from any browser (File → Print, or
-            Ctrl/Cmd + P). The two-column layout comes out clean without ads or navigation, which is
-            why many people keep a copy taped near the time clock, inside a timesheet binder, or on
-            the fridge door of a break room.
+            Prefer a ready-made copy? Download the one-page printable version — the full 1–60
+            table, the reverse decimal-to-minutes table, the formula, and quarter-hour rounding
+            rules, typeset for A4 with a QR code on the footer:
+          </p>
+          <p>
+            <a
+              href="/minutes-to-decimal-chart.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink/85"
+            >
+              ⬇ Download printable PDF chart
+            </a>
+          </p>
+          <p>
+            You can also print this page directly from any browser (File → Print, or Ctrl/Cmd + P).
+            The two-column layout comes out clean without ads or navigation, which is why many
+            people keep a copy taped near the time clock, inside a timesheet binder, or on the
+            fridge door of a break room.
           </p>
         </ProseSection>
 
