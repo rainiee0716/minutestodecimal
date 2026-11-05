@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   Img,
   Sequence,
   interpolate,
@@ -515,19 +516,28 @@ const OutroScene: React.FC = () => {
 export const IntroVideo: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: INK }}>
+      {/* 旁白：macOS Samantha TTS，按场景起点对齐；BGM 待补：
+          从 YouTube Audio Library 挑免费曲子存为 public/bgm.m4a 后，
+          在下方取消注释，并把每个 narration 音量调到 1、BGM 调到 0.12 左右 */}
+      {/* <Audio src={staticFile("bgm.m4a")} volume={0.12} loop /> */}
       <Sequence from={0} durationInFrames={120}>
+        <Audio src={staticFile("narration-1.m4a")} />
         <HookScene />
       </Sequence>
       <Sequence from={120} durationInFrames={270}>
+        <Audio src={staticFile("narration-2.m4a")} />
         <ConverterScene />
       </Sequence>
       <Sequence from={390} durationInFrames={240}>
+        <Audio src={staticFile("narration-3.m4a")} />
         <TimesheetScene />
       </Sequence>
       <Sequence from={630} durationInFrames={240}>
+        <Audio src={staticFile("narration-4.m4a")} />
         <ChartPdfScene />
       </Sequence>
       <Sequence from={870} durationInFrames={210}>
+        <Audio src={staticFile("narration-5.m4a")} />
         <OutroScene />
       </Sequence>
     </AbsoluteFill>
