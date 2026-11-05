@@ -55,7 +55,7 @@ const TechBackground: React.FC<{ accent?: string }> = ({ accent = CYAN }) => {
   });
 
   return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
+    <AbsoluteFill style={{ overflow: "hidden", zIndex: -1 }}>
       {/* 深空渐变底 */}
       <AbsoluteFill
         style={{
