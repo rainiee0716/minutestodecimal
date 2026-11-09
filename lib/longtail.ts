@@ -190,6 +190,14 @@ export function minutesPage(n: number): LongtailPage {
         a: `Same conversion, different phrasing: ${n} minutes as a decimal is ${dec} decimal hours. "In decimal" and "as a decimal" mean the same thing on a timesheet — divide ${n} by 60 and the result is what payroll multiplies by your hourly rate.`,
       },
       {
+        q: `What is ${n} minutes in decimal form?`,
+        a: `In decimal form, ${n} minutes is ${dec} — the same value whether you say "in decimal", "as a decimal" or "in decimal form"; the phrasing changes, the division does not: ${n} ÷ 60 = ${dec}.`,
+      },
+      {
+        q: `What is ${n} minutes in decimal hours?`,
+        a: `${n} minutes in decimal hours is ${dec} h. "Decimal hours" is the unit payroll multiplies by your rate: ${dec} h × $20.00/h = $${fmt(Number(dec.replace(/,/g, "")) * 20, 2)} for that block at $20 an hour.`,
+      },
+      {
         q: `What is ${n} minutes in hours and minutes?`,
         a: n >= 60
           ? `${n} minutes = ${h} hours ${m} minutes (${clock}).`

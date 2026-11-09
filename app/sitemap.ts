@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/seo";
 import { allLongtailSlugs } from "@/lib/longtail";
 
 // 站点最近一次内容更新时间，供爬虫判断抓取优先级
-const LAST_MODIFIED = new Date("2026-11-01");
+const LAST_MODIFIED = new Date("2026-11-09");
 const LONGTAIL_MODIFIED = new Date("2026-10-23");
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/guides/overtime-decimal-hours`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/guides/biweekly-timesheet-guide`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/guides/military-time-on-timesheets`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/guides/minutes-to-decimal-excel`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/about`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/privacy`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },

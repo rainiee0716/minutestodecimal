@@ -174,6 +174,14 @@ export const GUIDES: Guide[] = [
     summary:
       "Time clocks in hospitals, factories, and transit often punch in 24-hour time: 0730 for 7:30 AM, 1745 for 5:45 PM. The notation is compact, but it collides badly with decimal hours — writing 14.30 when the punch said 1430 is the single most expensive notation error on a timesheet, because 14.30 decimal hours is 14 hours 18 minutes, not 14 hours 30 minutes. The guide covers converting 24-hour times to 12-hour times and back, handling night shifts that cross midnight (2200 to 0600 is 8 hours, not negative 16), and a conversion table of the most common punch times with their true decimal equivalents.",
   },
+  {
+    href: "/guides/minutes-to-decimal-excel",
+    title: "Minutes to Decimal in Excel",
+    description:
+      "Excel formulas for decimal hours: =A1*24, =A1*1440, HOUR/MINUTE decomposition, the fraction-of-a-day trap, cell-format fixes, and a worked three-day timesheet.",
+    summary:
+      "Excel stores 7:45 as a fraction of a day (0.322917), which is why the decimal-hours formula is a multiplication — =A1*24 returns 7.75 where a ÷60 approach gives nonsense. This guide gives the full formula reference (decimal hours, total minutes, seconds, HOUR/MINUTE decomposition, two-place rounding), the two traps that break it (the result cell inheriting time format, and time stored as text with a #VALUE! error), the MOD fix for shifts that cross midnight, and a worked three-day week from punch times to decimal hours. The same formulas work unchanged in Google Sheets.",
+  },
 ];
 
 export const HEADER_NAV = [
