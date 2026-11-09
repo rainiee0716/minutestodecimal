@@ -6,6 +6,10 @@ A shift from `09:00` to `17:30` is not `9.5` on a timesheet. It is `8.00` hours 
 
 In this article, we’ll walk through the Excel formulas, the edge cases, and the small time-math mistakes that cause real payroll problems.
 
+I also recorded a 35-second walkthrough of the most expensive mistake and the free tools that catch it:
+
+{% youtube lxIHf6us7M8 %}
+
 ---
 
 ## 1. Clock time and duration are not the same thing
@@ -403,6 +407,10 @@ It runs entirely in the browser and does not require an account:
 There is also a full minutes-to-decimal chart here:
 
 [Minutes to Decimal Conversion Chart](https://www.minutestodecimal.org/minutes-to-decimal-chart)
+
+And if you want a printable copy for your desk or the break-room wall, there is a one-page PDF version with a QR code on the footer:
+
+[Printable Minutes to Decimal Chart (PDF)](https://www.minutestodecimal.org/minutes-to-decimal-chart.pdf)
 
 ---
 

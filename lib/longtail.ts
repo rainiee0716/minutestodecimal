@@ -186,6 +186,10 @@ export function minutesPage(n: number): LongtailPage {
         a: `${n} minutes = ${dec} decimal hours, because ${n} ÷ 60 = ${dec}.`,
       },
       {
+        q: `What is ${n} minutes as a decimal?`,
+        a: `Same conversion, different phrasing: ${n} minutes as a decimal is ${dec} decimal hours. "In decimal" and "as a decimal" mean the same thing on a timesheet — divide ${n} by 60 and the result is what payroll multiplies by your hourly rate.`,
+      },
+      {
         q: `What is ${n} minutes in hours and minutes?`,
         a: n >= 60
           ? `${n} minutes = ${h} hours ${m} minutes (${clock}).`

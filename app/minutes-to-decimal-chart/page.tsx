@@ -8,8 +8,8 @@ import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
 export const metadata = pageMetadata({
-  title: "Minutes to Decimal Chart (1–60)",
-  description: "Full minutes to decimal chart for payroll: every minute 1–60 as decimal hours, with the common values (15, 20, 30, 45) answered directly. Printable, plus a free converter.",
+  title: "Minutes to Decimal Chart (1–60) — Printable Timesheet Conversion",
+  description: "Full minutes to decimal chart for timesheets and payroll: every minute 1–60 as decimal hours, with the common values (15, 20, 30, 45) answered directly. Printable PDF included, plus a free converter.",
   path: "/minutes-to-decimal-chart",
   absoluteTitle: false,
 });
@@ -84,6 +84,15 @@ export default function Page() {
         </div>
 
         <AdSlot />
+
+        <ProseSection title="A timesheet decimal chart you can keep">
+          <p>
+            This page works as a timesheet decimal chart in two ways: scan the full 1–60 table
+            below when you fill in a week's hours, or download the printable PDF and pin it next
+            to the time clock. HR teams use the same chart to audit rounding, so every value here
+            matches the quarter-hour anchors (0.25, 0.50, 0.75, 1.00) payroll systems expect.
+          </p>
+        </ProseSection>
 
         <ProseSection title="How to convert minutes to decimal">
           <p>
