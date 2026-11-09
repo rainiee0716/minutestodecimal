@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { GA4_MEASUREMENT_ID } from "@/lib/seo";
+import { flushQueuedEvents, trackEvent } from "@/lib/analytics";
 import { useEffect } from "react";
 
 declare global {
@@ -18,7 +19,7 @@ export default function GoogleAnalytics() {
 
   useEffect(() => {
     if (!measurementId) return;
-    window.gtag?.("event", "page_view", { page_path: pathname });
+    trackEvent("page_view", { page_path: pathname });
   }, [measurementId, pathname]);
 
   if (!measurementId) return null;
@@ -28,6 +29,8 @@ export default function GoogleAnalytics() {
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
         strategy="afterInteractive"
+        // gtag.js 就绪后补发队列里的埋点（慢网络首屏交互不丢事件）
+        onLoad={() => flushQueuedEvents()}
       />
       <Script id="ga4-init" strategy="afterInteractive">
         {`
