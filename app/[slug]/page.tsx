@@ -7,6 +7,7 @@ import {
   allLongtailSlugs,
   parseLongtailSlug,
 } from "@/lib/longtail";
+import { ES_ALTERNATES } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import UnitConverter from "@/components/UnitConverter";
@@ -35,6 +36,7 @@ export async function generateMetadata({
     title: page.title,
     description: page.description,
     path: `/${page.slug}`,
+    esPath: ES_ALTERNATES[`/${page.slug}`],
   });
 }
 

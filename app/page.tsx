@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
   title: "Minutes to Decimal Converter \u2014 Free Timesheet Calculator",
   description: "Free tool to convert hours and minutes into decimal time for payroll and timesheets. Instant, accurate, no sign-up.",
   path: "/",
+  esPath: "/es",
   absoluteTitle: true,
 });
 

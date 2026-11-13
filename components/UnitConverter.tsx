@@ -55,6 +55,40 @@ const MODES: Record<Mode, Cfg> = {
   },
 };
 
+// 西语 UI 标签覆盖（LatAm 中性用词，小数点用句点与工具一致）
+const ES_MODES: Partial<
+  Record<Mode, { title: string; labels: Record<string, string>; placeholders: Record<string, string>; sub: string; formula: string }>
+> = {
+  hoursToMinutes: {
+    title: "Horas y Minutos → Minutos Totales",
+    labels: { h: "Horas", m: "Minutos" },
+    placeholders: { h: "p. ej. 1.5", m: "p. ej. 30" },
+    sub: "minutos",
+    formula: "minutos totales = (horas × 60) + minutos",
+  },
+  minutesToHours: {
+    title: "Minutos → Horas Decimales",
+    labels: { m: "Minutos" },
+    placeholders: { m: "p. ej. 90" },
+    sub: "horas decimales",
+    formula: "horas decimales = minutos ÷ 60",
+  },
+  decimalToHours: {
+    title: "Horas Decimales → Horas y Minutos",
+    labels: { d: "Horas decimales" },
+    placeholders: { d: "p. ej. 1.75" },
+    sub: "horas y minutos",
+    formula: "horas = floor(d); minutos = round((d − horas) × 60)",
+  },
+  secondsToMinutes: {
+    title: "Segundos → Minutos",
+    labels: { s: "Segundos" },
+    placeholders: { s: "p. ej. 90" },
+    sub: "minutos",
+    formula: "minutos = segundos ÷ 60",
+  },
+};
+
 const inputClass =
   "h-12 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 text-lg transition focus:border-brand-600 focus:bg-white focus:ring-4 focus:ring-brand-500/15 focus:outline-none";
 const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
@@ -62,11 +96,14 @@ const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
 export default function UnitConverter({
   mode,
   defaults,
+  lang = "en",
 }: {
   mode: Mode;
   defaults?: Record<string, string>;
+  lang?: "en" | "es";
 }) {
   const cfg = MODES[mode];
+  const es = lang === "es" ? ES_MODES[mode] : undefined;
   const [vals, setVals] = useState<Record<string, string>>({ ...cfg.defaults, ...defaults });
   const numeric = Object.fromEntries(
     cfg.inputs.map((i) => [i.key, parseFloat(vals[i.key]) || 0])
@@ -96,7 +133,7 @@ export default function UnitConverter({
   return (
     <section className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-card">
       <h2 className="mb-5 text-xs font-semibold uppercase tracking-wider text-muted">
-        {cfg.title}
+        {es?.title ?? cfg.title}
       </h2>
       <div className="flex flex-wrap items-end gap-3">
         {cfg.inputs.map((inp) => (
@@ -104,7 +141,7 @@ export default function UnitConverter({
             key={inp.key}
             className={cfg.inputs.length > 1 ? "min-w-[120px] flex-1" : "w-full"}
           >
-            <span className={labelClass}>{inp.label}</span>
+            <span className={labelClass}>{es?.labels[inp.key] ?? inp.label}</span>
             <input
               type="number"
               min="0"
@@ -112,7 +149,8 @@ export default function UnitConverter({
               value={vals[inp.key]}
               onChange={(e) => setVals((p) => ({ ...p, [inp.key]: e.target.value }))}
               className={inputClass}
-              aria-label={inp.label}
+              aria-label={es?.labels[inp.key] ?? inp.label}
+              placeholder={es?.placeholders[inp.key] ?? inp.placeholder}
             />
           </label>
         ))}
@@ -120,7 +158,7 @@ export default function UnitConverter({
       <div className="relative mt-5 rounded-xl bg-result-gradient p-5 text-center shadow-card ring-1 ring-inset ring-white/15">
         <CopyButton value={res.value} location={mode} />
         <span className="text-xs font-medium uppercase tracking-wide text-brand-100">
-          {res.sub ?? "Result"}
+          {es?.sub ?? res.sub ?? "Result"}
         </span>
         <output
           className="mt-1 block text-4xl font-bold tracking-tight text-white tabular-nums"
@@ -130,7 +168,7 @@ export default function UnitConverter({
         </output>
       </div>
       <p className="mx-auto mt-4 w-fit rounded-full bg-slate-100 px-3 py-1 font-mono text-xs text-slate-500">
-        {cfg.formula}
+        {es?.formula ?? cfg.formula}
       </p>
     </section>
   );

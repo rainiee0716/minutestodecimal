@@ -76,7 +76,7 @@ export type LongtailPage = {
   tableRows: [string, string][];
   faq: { q: string; a: string }[];
   related: { href: string; label: string }[];
-  breadcrumb: { name: string; href: string }[];
+  breadcrumb: { name: string; path: string }[];
 };
 
 // ---------------------------------------------------------------------------
@@ -221,9 +221,9 @@ export function minutesPage(n: number): LongtailPage {
         .map((k) => ({ href: `/${k}-minutes-in-decimal`, label: `${k} Minutes in Decimal` })),
     ],
     breadcrumb: [
-      { name: "Home", href: "/" },
-      { name: "Minutes to Decimal Chart", href: "/minutes-to-decimal-chart" },
-      { name: `${n} Minutes in Decimal`, href: `/${n}-minutes-in-decimal` },
+      { name: "Home", path: "/" },
+      { name: "Minutes to Decimal Chart", path: "/minutes-to-decimal-chart" },
+      { name: `${n} Minutes in Decimal`, path: `/${n}-minutes-in-decimal` },
     ],
   };
 }
@@ -330,9 +330,9 @@ export function secondsPage(n: number): LongtailPage {
       { href: "/", label: "Minutes to Decimal Converter" },
     ],
     breadcrumb: [
-      { name: "Home", href: "/" },
-      { name: "Seconds to Minutes Converter", href: "/seconds-to-minutes-converter" },
-      { name: `${n} Seconds to Minutes`, href: `/${n}-seconds-to-minutes` },
+      { name: "Home", path: "/" },
+      { name: "Seconds to Minutes Converter", path: "/seconds-to-minutes-converter" },
+      { name: `${n} Seconds to Minutes`, path: `/${n}-seconds-to-minutes` },
     ],
   };
 }
@@ -419,9 +419,9 @@ export function hoursPage(x: number): LongtailPage {
       { href: "/", label: "Minutes to Decimal Converter" },
     ],
     breadcrumb: [
-      { name: "Home", href: "/" },
-      { name: "Decimal to Hours Calculator", href: "/decimal-to-hours-calculator" },
-      { name: `${x} Hours in Minutes`, href: `/${x}-hours-in-minutes` },
+      { name: "Home", path: "/" },
+      { name: "Decimal to Hours Calculator", path: "/decimal-to-hours-calculator" },
+      { name: `${x} Hours in Minutes`, path: `/${x}-hours-in-minutes` },
     ],
   };
 }
@@ -503,9 +503,9 @@ export function hmPage(h: number, m: number): LongtailPage {
       { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
     ],
     breadcrumb: [
-      { name: "Home", href: "/" },
-      { name: "Hours to Decimal Calculator", href: "/hours-to-decimal-calculator" },
-      { name: `${h} Hours ${m} Minutes in Decimal`, href: `/${h}-hours-${m}-minutes-in-decimal` },
+      { name: "Home", path: "/" },
+      { name: "Hours to Decimal Calculator", path: "/hours-to-decimal-calculator" },
+      { name: `${h} Hours ${m} Minutes in Decimal`, path: `/${h}-hours-${m}-minutes-in-decimal` },
     ],
   };
 }

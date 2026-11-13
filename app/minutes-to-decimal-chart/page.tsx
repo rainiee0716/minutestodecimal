@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
   title: "Minutes to Decimal Chart (1–60) — Printable Timesheet Conversion",
   description: "Full minutes to decimal chart for timesheets and payroll: every minute 1–60 as decimal hours, with the common values (15, 20, 30, 45) answered directly. Printable PDF included, plus a free converter.",
   path: "/minutes-to-decimal-chart",
+  esPath: "/es/tabla-minutos-a-decimales",
   absoluteTitle: false,
 });
 

@@ -17,6 +17,8 @@ type PageSeoInput = {
   description: string;
   path: string;
   absoluteTitle?: boolean;
+  /** 西语对应页路径（如 "/es/20-minutos-a-decimales"）：传入即生成互惠 hreflang */
+  esPath?: string;
 };
 
 export function pageMetadata({
@@ -24,19 +26,24 @@ export function pageMetadata({
   description,
   path,
   absoluteTitle = false,
+  esPath,
 }: PageSeoInput): Metadata {
   const url = `${SITE_URL}${path}`;
+
+  const languages: Record<string, string> = esPath
+    ? { en: url, es: `${SITE_URL}${esPath}`, "x-default": url }
+    : {};
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages },
     openGraph: {
       title,
       description,
       url,
       siteName: SITE_NAME,
-      locale: "en_US",
+      locale: esPath ? "es_MX" : "en_US",
       type: "website",
       images: [
         {

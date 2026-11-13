@@ -39,5 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...core, ...longtail];
+  // 西语页（/es 前缀，与英文页互惠 hreflang）
+  const spanish: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/es`, lastModified: new Date("2026-11-13"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/es/tabla-minutos-a-decimales`, lastModified: new Date("2026-11-13"), changeFrequency: "monthly", priority: 0.6 },
+    ...["20-minutos-a-decimales", "45-minutos-a-decimales", "10-minutos-a-decimales", "30-minutos-a-decimales", "90-segundos-a-minutos", "600-segundos-a-minutos"].map(
+      (slug) => ({
+        url: `${SITE_URL}/es/${slug}`,
+        lastModified: new Date("2026-11-13"),
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+      })
+    ),
+  ];
+
+  return [...core, ...longtail, ...spanish];
 }

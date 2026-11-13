@@ -184,6 +184,23 @@ export const GUIDES: Guide[] = [
   },
 ];
 
+// EN ↔ ES hreflang 对照（首批西语页；有新对照页时在此登记，两侧 metadata 自动生效）
+export const ES_ALTERNATES: Record<string, string> = {
+  "/": "/es",
+  "/minutes-to-decimal-chart": "/es/tabla-minutos-a-decimales",
+  "/20-minutes-in-decimal": "/es/20-minutos-a-decimales",
+  "/45-minutes-in-decimal": "/es/45-minutos-a-decimales",
+  "/30-minutes-in-decimal": "/es/30-minutos-a-decimales",
+  "/10-minutes-in-decimal": "/es/10-minutos-a-decimales",
+  "/90-seconds-to-minutes": "/es/90-segundos-a-minutos",
+  "/600-seconds-to-minutes": "/es/600-segundos-a-minutos",
+};
+
+// 西语页反向映射（es 路径 → en 路径）
+export const EN_ALTERNATES: Record<string, string> = Object.fromEntries(
+  Object.entries(ES_ALTERNATES).map(([en, es]) => [es, en])
+);
+
 export const HEADER_NAV = [
   { href: "/tools", label: "Tools" },
   { href: "/guides", label: "Guides" },
@@ -237,6 +254,7 @@ export const FOOTER_COLS: {
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
       { href: "/privacy", label: "Privacy Policy" },
+      { href: "/es", label: "Español" },
     ],
   },
 ];
