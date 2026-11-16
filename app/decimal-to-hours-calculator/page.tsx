@@ -61,6 +61,14 @@ const faq = [
     a: "Use the Minutes to Decimal Converter to turn hours and minutes into a single decimal number.",
   },
   {
+    q: "How do I convert hours and minutes to decimals?",
+    a: "The reverse of this page: multiply minutes by 1 ÷ 60 and add the hours — 7 h 45 min = 7 + (45 ÷ 60) = 7.75 decimal hours. The Hours to Decimal Calculator does it in one step, including full weekly timesheets.",
+  },
+  {
+    q: "What is decimal time to hours and minutes?",
+    a: "The same thing as decimal hours: a duration written as 7.75 h instead of 7 h 45 min. Read the whole number as hours and multiply the part after the point by 60 — 0.75 × 60 = 45 minutes.",
+  },
+  {
     q: "Does this work for values over 24 hours?",
     a: "Yes. 45.75 decimal hours is 45 hours 45 minutes. Decimal hours are a duration, not a clock time, so there is no 24-hour limit to worry about.",
   },
@@ -98,6 +106,18 @@ export default function Page() {
         </div>
 
         <AdSlot />
+
+        <ProseSection title="Two directions, one formula">
+          <p>
+            This page converts <strong>decimal hours → hours and minutes</strong> (7.75 → 7 h 45 m).
+            The reverse — clock time to decimals for payroll — lives on the{" "}
+            <a href="/hours-to-decimal-calculator" className="font-medium text-brand-600 hover:text-brand-700">
+              Hours to Decimal Calculator
+            </a>
+            . Both use the same relationship: 1 hour = 1.00 in decimals, and the minutes are always
+            the part after the point × 60.
+          </p>
+        </ProseSection>
 
         <ProseSection title="How to convert decimal hours to hours and minutes">
           <p>Keep the whole number as hours, then multiply the decimal part by 60 to get minutes:</p>

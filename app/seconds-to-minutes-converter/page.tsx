@@ -181,6 +181,7 @@ export default function Page() {
 
         <RelatedLinks
           links={[
+            { href: "/decimal-to-hours-calculator", label: "Decimal to Hours Calculator" },
             { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },
             { href: "/hours-to-minutes-calculator", label: "Hours to Minutes Calculator" },
             { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
