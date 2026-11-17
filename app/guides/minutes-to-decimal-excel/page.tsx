@@ -91,6 +91,24 @@ export default function MinutesToDecimalExcel() {
           />
         </section>
 
+        <section className="mx-auto mt-8 max-w-2xl rounded-xl border border-brand-100 bg-gradient-to-br from-white to-brand-50/60 p-6 text-center shadow-card">
+          <h2 className="mb-2 text-lg font-semibold text-ink">
+            Skip the setup — download the ready-made template
+          </h2>
+          <p className="mb-4 text-sm text-muted">
+            A free weekly timesheet in Excel format with every formula on this page already wired
+            in: decimal conversion, lunch deductions, regular/overtime split and gross pay. Edit
+            the yellow cells, read the answers.
+          </p>
+          <a
+            href="/weekly-timesheet-template.xlsx"
+            download
+            className="inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink/85"
+          >
+            ⬇ Download weekly timesheet template (.xlsx)
+          </a>
+        </section>
+
         <ProseSection title="What each formula is for">
           <ul className="list-disc space-y-2 pl-5">
             {FORMULA_NOTES.map(([f, note]) => (

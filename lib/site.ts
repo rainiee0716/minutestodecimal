@@ -222,6 +222,7 @@ export const FOOTER_COLS: {
       { href: "/hours-to-decimal-calculator", label: "Hours to Decimal Calculator" },
       { href: "/minutes-to-decimal-chart", label: "Minutes to Decimal Chart" },
       { href: "/embed", label: "Embed Widget" },
+      { href: "/weekly-timesheet-template.xlsx", label: "Timesheet Template (Excel)" },
     ],
   },
   {
