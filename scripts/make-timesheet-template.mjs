@@ -1,4 +1,5 @@
 // 生成周工时表 Excel 模板（内置十进制换算公式），输出到 public/
+// 运行前需临时安装依赖：npm i -D exceljs（生成完成后可移除，站点构建不依赖它）
 // 运行：node scripts/make-timesheet-template.mjs
 import ExcelJS from "exceljs";
 
