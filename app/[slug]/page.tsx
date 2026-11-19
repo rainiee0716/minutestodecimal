@@ -36,6 +36,7 @@ export async function generateMetadata({
     title: page.title,
     description: page.description,
     path: `/${page.slug}`,
+    absoluteTitle: page.absoluteTitle,
     esPath: ES_ALTERNATES[`/${page.slug}`],
   });
 }
@@ -81,7 +82,7 @@ export default function LongtailPage({ params }: { params: { slug: string } }) {
           <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">
             {page.tableTitle}
           </h2>
-          <ConversionTable fromHeader={page.tableFrom} toHeader={page.tableTo} rows={page.tableRows} />
+          <ConversionTable fromHeader={page.tableFrom} midHeader={page.tableMidHeader} toHeader={page.tableTo} rows={page.tableRows} />
         </section>
 
         <FAQList items={page.faq} />

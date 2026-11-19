@@ -17,9 +17,21 @@ export const KEEPER_SLUGS = [
   "20-minutes-in-decimal",   // 9,900/月
   "45-minutes-in-decimal",   // 8,100/月
   "10-minutes-in-decimal",   // 6,600/月
-  "90-seconds-to-minutes",   // 4,400/月
   "30-minutes-in-decimal",   // 2,900/月
+  // 秒转分钟数值页簇（GSC 实证 90/600 排 9~13 名；按规划师月搜量从大到小）
+  "90-seconds-to-minutes",   // 4,400/月
   "600-seconds-to-minutes",  // 2,400/月
+  "300-seconds-to-minutes",  // 9,900/月
+  "1000-seconds-to-minutes", // 8,100/月
+  "3600-seconds-to-minutes", // 6,600/月
+  "500-seconds-to-minutes",  // 4,400/月
+  "200-seconds-to-minutes",  // 2,900/月
+  "1200-seconds-to-minutes", // 2,900/月
+  "1800-seconds-to-minutes", // 2,900/月
+  "100-seconds-to-minutes",
+  "150-seconds-to-minutes",
+  "2400-seconds-to-minutes",
+  "120-seconds-to-minutes",
 ] as const;
 
 // 非白名单 slug 的 301 归宿：把权重集中到各簇的强位页面
@@ -63,6 +75,8 @@ export type LongtailPage = {
   family: "minutesInDecimal" | "secondsToMinutes" | "hoursInMinutes" | "hmInDecimal";
   h1: string;
   title: string;
+  /** true 时不套 “| 站名” 后缀，标题本身已是完整主词形态 */
+  absoluteTitle?: boolean;
   description: string;
   answerValue: string;
   answerSub: string;
@@ -72,8 +86,9 @@ export type LongtailPage = {
   prose: { title: string; paras: string[] }[];
   tableTitle: string;
   tableFrom: string;
+  tableMidHeader?: string;
   tableTo: string;
-  tableRows: [string, string][];
+  tableRows: [string, string, string?][];
   faq: { q: string; a: string }[];
   related: { href: string; label: string }[];
   breadcrumb: { name: string; path: string }[];
@@ -233,8 +248,8 @@ export function minutesPage(n: number): LongtailPage {
 
 // 基础 1–600 全量；>600 的收录 GSC 真实出现过的值 + 常见整十分钟锚点
 const SECONDS_SPECIALS = [
-  720, 900, 990, 1080, 1200, 1337, 1500, 1800, 2175, 2268, 2400, 2660, 2700, 2790,
-  3000, 3570, 3600, 5400, 7200, 15000, 19000, 32000, 69000, 69420,
+  720, 900, 990, 1000, 1080, 1200, 1337, 1500, 1800, 2175, 2268, 2400, 2660, 2700,
+  2790, 3000, 3570, 3600, 5400, 7200, 15000, 19000, 32000, 69000, 69420,
 ];
 
 const SEC_CONTEXTS = [
@@ -267,27 +282,30 @@ export function secondsPage(n: number): LongtailPage {
   const ss = n % 60;
   const ctx = SEC_CONTEXTS[n % SEC_CONTEXTS.length];
   const anchors = [90, 300, 600, 900, 1800, 3600].filter((a) => a !== n);
-  const nearby = [n - 10, n - 5, n, n + 5, n + 10].filter((v) => v >= 1);
+  const hours = fmt(n / 3600);
+  const isExact = n % 60 === 0;
+  const minutesText = isExact ? `${fmtInt(mm)} minutes` : `${dec} minutes`;
 
   return {
     slug: `${n}-seconds-to-minutes`,
     family: "secondsToMinutes",
     h1: `${n} Seconds to Minutes`,
-    title: `${n} Seconds to Minutes = ${n % 60 === 0 ? `${fmtInt(mm)} Minutes` : `${dec} Minutes`}`,
-    description: `${n} seconds equals ${n % 60 === 0 ? `exactly ${mm} minutes` : `${dec} decimal minutes (${mm}m ${ss}s)`}. Free converter, formula, and worked example for ${n} seconds.`,
-    answerValue: n % 60 === 0 ? fmtInt(mm) : dec,
+    title: `${n} Seconds to Minutes = ${isExact ? `${fmtInt(mm)} Min` : `${dec} Min`} — Formula & Chart`,
+    absoluteTitle: true,
+    description: `${n} seconds equals ${isExact ? `exactly ${fmtInt(mm)} minutes` : `${dec} minutes (${mm} min ${ss} s)`}. Formula: seconds ÷ 60. Free converter, three-column chart, and worked examples.`,
+    answerValue: isExact ? fmtInt(mm) : dec,
     answerSub: "minutes",
-    answerNote: n % 60 === 0
+    answerNote: isExact
       ? `${n} seconds = ${mm} minutes exactly`
       : `${n} seconds = ${mm} minutes ${ss} seconds = ${dec} decimal minutes`,
-    formula: `${n} seconds ÷ 60 = ${n % 60 === 0 ? `${mm} minutes` : `${dec} minutes`}`,
+    formula: `${n} seconds ÷ 60 = ${isExact ? `${mm} minutes` : `${dec} minutes`}`,
     converter: { mode: "secondsToMinutes", defaults: { s: String(n) } },
     prose: [
       {
         title: `How to convert ${n} seconds to minutes`,
         paras: [
           `One minute is 60 seconds, so divide the seconds by 60:`,
-          `${cap(numberToWords(n))} (${fmtInt(n)}) seconds ÷ 60 = ${n % 60 === 0 ? `${mm} minutes exactly` : `${dec} decimal minutes`}. ` +
+          `${cap(numberToWords(n))} (${fmtInt(n)}) seconds ÷ 60 = ${isExact ? `${mm} minutes exactly` : `${dec} decimal minutes`}. ` +
             `The converter above starts at ${n} — type any other value to check it.`,
         ],
       },
@@ -295,23 +313,50 @@ export function secondsPage(n: number): LongtailPage {
         title: ctx.title.replace("{n}", fmtInt(n)),
         paras: [ctx.body(n, mm, ss, dec)],
       },
+      {
+        title: `Why convert seconds to minutes anyway`,
+        paras: [
+          `Three everyday cases: payroll systems bill in whole minutes or decimal hours, so raw seconds must be divided by 60 before they can be paid; ` +
+            `workout and interval timers report seconds mid-set, but training plans and logs are written in minutes; ` +
+            `and video editing timelines cut in seconds while durations are quoted in minutes. In all three, seconds ÷ 60 is the bridge between what the device shows and what people read.`,
+        ],
+      },
+      {
+        title: `Common mistakes with ${n} seconds`,
+        paras: [
+          `Dividing by 100 instead of 60: ${n} seconds is ${dec} minutes, not ${fmt(n / 100)} — the ÷100 habit comes from dollars-and-cents thinking and it quietly skews every timesheet it touches. ` +
+            `Reading ${dec} minutes as "${mm} minutes ${ss + 40} seconds" is the second trap: decimal minutes count fractions of a minute (0.5 = 30 seconds), not seconds appended after the point. ` +
+            `And on a timesheet, don't forget the next step — ${dec} minutes is ${fmt(n / 3600)} decimal hours, which is the number payroll actually multiplies by your rate.`,
+        ],
+      },
     ],
-    tableTitle: `${n} seconds to minutes — nearby values`,
+    tableTitle: `${n} seconds to minutes — seconds, minutes and decimal hours`,
     tableFrom: "Seconds",
-    tableTo: "Minutes",
-    tableRows: nearby.map((v) => [`${fmtInt(v)} seconds`, div60(v)] as [string, string]),
+    tableMidHeader: "Minutes",
+    tableTo: "Decimal hours",
+    tableRows: [-30, -20, -10, -5, 0, 5, 10, 20, 30]
+      .map((d) => n + d)
+      .filter((v) => v >= 1)
+      .map((v) => {
+        const mins = v / 60;
+        return [
+          `${fmtInt(v)} s`,
+          `${Math.floor(mins)} min ${v % 60} s`,
+          mins.toFixed(2),
+        ] as [string, string, string];
+      }),
     faq: [
       {
         q: `How many minutes is ${n} seconds?`,
-        a: `${n} seconds = ${n % 60 === 0 ? `exactly ${mm} minutes` : `${dec} minutes (${mm} minutes ${ss} seconds)`}, because ${n} ÷ 60 = ${dec}.`,
+        a: `${n} seconds = ${isExact ? `exactly ${mm} minutes` : `${dec} minutes (${mm} minutes ${ss} seconds)`}, because ${n} ÷ 60 = ${dec}.`,
       },
       {
-        q: `What is ${n} seconds in minutes and seconds?`,
-        a: `${n} seconds = ${mm} minutes ${ss} seconds.`,
+        q: `Is ${dec} minutes the same as ${mm} minutes ${ss + 40} seconds?`,
+        a: `No. ${dec} in decimal minutes means ${ss} seconds past ${mm} minutes — the digits after the point are a fraction of a minute, not extra seconds. ${dec} minutes = ${mm} min ${ss} s.`,
       },
       {
-        q: `How many hours is ${n} seconds?`,
-        a: `${n} seconds = ${fmt(n / 3600)} hours (${n} ÷ 3,600).`,
+        q: `What is ${n} seconds in decimal hours?`,
+        a: `Convert to minutes first (${dec} min), then divide by 60 again: ${n} seconds = ${hours} decimal hours. This is the number payroll multiplies by an hourly rate.`,
       },
       {
         q: `How do you convert ${n} seconds to minutes by hand?`,
@@ -324,6 +369,7 @@ export function secondsPage(n: number): LongtailPage {
     ],
     related: [
       { href: "/seconds-to-minutes-converter", label: "Seconds to Minutes Converter" },
+      { href: "/decimal-to-minutes", label: "Decimal to Minutes Converter" },
       ...(n !== 90 ? [{ href: "/90-seconds-to-minutes", label: "90 Seconds to Minutes" }] : []),
       ...(n !== 600 ? [{ href: "/600-seconds-to-minutes", label: "600 Seconds to Minutes" }] : []),
       { href: "/minutes-to-hours-converter", label: "Minutes to Hours Converter" },

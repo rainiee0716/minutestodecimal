@@ -53,5 +53,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   ];
 
-  return [...core, ...longtail, ...spanish];
+  // 数值页（keeper）：分钟 4 页 + 秒转分钟 13 页，全部静态生成
+  const KEEPER_SLUGS = [
+    "20-minutes-in-decimal", "45-minutes-in-decimal", "10-minutes-in-decimal", "30-minutes-in-decimal",
+    "90-seconds-to-minutes", "600-seconds-to-minutes", "300-seconds-to-minutes", "1000-seconds-to-minutes",
+    "3600-seconds-to-minutes", "500-seconds-to-minutes", "200-seconds-to-minutes", "1200-seconds-to-minutes",
+    "1800-seconds-to-minutes", "100-seconds-to-minutes", "150-seconds-to-minutes", "2400-seconds-to-minutes",
+    "120-seconds-to-minutes",
+  ];
+  const keepers: MetadataRoute.Sitemap = KEEPER_SLUGS.map((slug) => ({
+    url: `${SITE_URL}/${slug}`,
+    lastModified: new Date("2026-11-19"),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [...core, ...longtail, ...keepers, ...spanish];
 }

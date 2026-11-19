@@ -43,7 +43,7 @@ export function pageMetadata({
       description,
       url,
       siteName: SITE_NAME,
-      locale: esPath ? "es_MX" : "en_US",
+      locale: "en_US",
       type: "website",
       images: [
         {

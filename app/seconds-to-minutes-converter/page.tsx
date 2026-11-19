@@ -83,6 +83,23 @@ const CONVERSIONS: [string, string][] = [
   ["7,200 seconds", "120 minutes"],
 ];
 
+// 数值页索引：本簇全部 13 个专用页（Step 3 枢纽改造）
+const VALUE_PAGES: [string, string][] = [
+  ["90 seconds to minutes", "1.5 min"],
+  ["300 seconds to minutes", "5 min"],
+  ["600 seconds to minutes", "10 min"],
+  ["100 seconds to minutes", "1.67 min"],
+  ["120 seconds to minutes", "2 min"],
+  ["150 seconds to minutes", "2.5 min"],
+  ["200 seconds to minutes", "3.33 min"],
+  ["500 seconds to minutes", "8.33 min"],
+  ["1000 seconds to minutes", "16.67 min"],
+  ["1200 seconds to minutes", "20 min"],
+  ["1800 seconds to minutes", "30 min"],
+  ["2400 seconds to minutes", "40 min"],
+  ["3600 seconds to minutes", "60 min"],
+];
+
 export default function Page() {
   return (
     <article>
@@ -170,6 +187,35 @@ export default function Page() {
         </section>
 
         <FAQList items={faq} />
+
+        <section className="mt-10 md:mt-14">
+          <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">
+            Every seconds-to-minutes page on this site
+          </h2>
+          <p className="mx-auto mb-5 max-w-2xl text-center text-sm text-muted">
+            One dedicated page per common value, each with its own converter, three-column chart
+            and worked examples. Bookmark the ones you look up most.
+          </p>
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+            {VALUE_PAGES.map(([label, answer]) => {
+              const slug = label
+                .replace(/ seconds to minutes/, "-seconds-to-minutes")
+                .replace(/ /g, "-")
+                .toLowerCase()
+                .replace(/^(\d+)/, "$1");
+              return (
+                <a
+                  key={slug}
+                  href={`/${slug}`}
+                  className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-card transition-colors hover:border-brand-300 hover:bg-brand-50/60"
+                >
+                  <div className="text-sm font-semibold text-ink">{label}</div>
+                  <div className="mt-1 font-mono text-xs font-semibold text-brand-700">{answer}</div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
 
         <RelatedLinks
           title="Popular specific conversions"
