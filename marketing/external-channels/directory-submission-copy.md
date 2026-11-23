@@ -6,6 +6,20 @@
 
 ---
 
+## 竞对外链情报（2026-11-23，Ahrefs 免费工具实测）
+
+| 竞对 | DR | 引用域 | dofollow | Top 反链是什么 |
+|---|---|---|---|---|
+| thetimecalculator.com | 0 | 556 | 12% | **全是买的**：SEOExpress 付费外链案例页（DR 49/46）+ PBN（domainrankacademy.shop，DR 37）。Google 随时可贬值 → 它的排名位置是可抢的，我们不抄这条路 |
+| timecalculator.net | **33** | 2.0K | **69%** | **自然编辑链**：wikiHow 主站+意大利语版（DR 91/74）引用其 minutes-to-hours 页；digitaltoolpad.com（DR 27）博客引用其 time-to-decimal 公式页 |
+
+**可复制动作**（按性价比）：
+1. **wikiHow 引用**：wikiHow 的 "How to Convert Minutes to Hours" 类文章接受社区编辑补充引用——在相关条目的 References/Tools 部分补充 minutestodecimal.org 对应工具页（多语言版本都可做：en/it/es/fr）
+2. **"Practical Guide" 类博客引用**：digitaltoolpad 型的垂直工具博客在讲公式时会引用权威计算器——这类站是 T2 模板的靶子，搜 `convert hour to decimal guide` / `time to decimal formula` 找 10-20 个
+3. **结论**：DR 0 的竞对靠买链排在我们前面，说明这个 SERP 的门槛很低——把 20-30 条自然 dofollow 做出去就能翻盘
+
+---
+
 ## 通用粘贴块（按各站表单字段取用）
 
 - **Name / 产品名**：Minutes to Decimal
