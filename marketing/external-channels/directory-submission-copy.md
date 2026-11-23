@@ -73,6 +73,45 @@
 
 ---
 
+## 二批：高权重目录（DR 40+，按门槛从低到高排）
+
+> 这批是 DR 从 1.9 → 10+ 的主力，但多数需要注册/审核，每个留 15-30 分钟。
+> 提交前先在站内搜索产品名，确认没有旧条目。
+
+### 10. Product Hunt ⭐ 高权重
+- 提交地址：https://www.producthunt.com/posts/new（需账号）
+- 价值：DR 85+，dofollow；免费工具发布天然对口
+- 做法：以 Maker 身份发布，Tagline 用通用块的 Tagline；图片用 og.png；分类选 Productivity 或 HR
+- 提示：周二-周四早上（美东）发布流量最好；提前准备 2-3 条第一小时评论（让朋友来）
+
+### 11. SaaSHub
+- 提交地址：https://www.saashub.com/add-service（需账号）
+- 价值：DR 60+ 软件目录，列表页 dofollow
+- 做法：套通用块；分类选 "Time Tracking" 或 "Payroll"
+
+### 12. G2 ⭐ 高权重（免费 listing，审核严）
+- 提交地址：https://www.g2.com/products/list（需账号，审核 1-2 周）
+- 价值：DR 90+；免费 listing 通过后有品牌页 + dofollow
+- 门槛：要求真实产品页/隐私政策/条款（本站已有 /privacy；如需 Terms 页可加）
+- 做法：填通用块 Long/About；分类 Payroll / HR
+
+### 13. Capterra
+- 提交地址：https://www.capterra.com/vendors/sign-up（免费 listing，审核严）
+- 价值：DR 90+（Gartner 系），与 G2 数据互通
+- 做法：同 G2；免费档即可，不用买广告
+
+### 14. There's An App For That (taaft.com)
+- 提交地址：https://www.taaft.com/submit（AI/工具目录，提交免费）
+- 价值：收录快，适合小工具
+- 做法：套通用块 Short description
+
+### 15. ToolFinder / free-calculator 类合集站（outreach 型）
+- 找法：Google 搜 `best free time calculator sites` / `calculator widget for website`，
+  找合集文页面的站长，用 embed-outreach.md 里的 T1 模板发邮件
+- 价值：这类页面就是「给读者找计算器」的场景，接受率最高
+
+---
+
 ## 跳过（无效/需付费）
 - **Uneed**：免费通道已关，新项目需付费 Skip the Line / Fast-track → 跳过
 - **StartupBase**：免费档要求目标站挂它的 StartupBase badge → 跳过（除非你愿意加 badge）

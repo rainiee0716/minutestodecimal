@@ -35,29 +35,132 @@
 
 - **no-code.tools/calculators** —— 专门的「可嵌入计算器」目录，直接提交 /embed
 - alt 阵营：calculator-1.com/widgets 等同类目录只收自家，跳过
+- 其余目录站（Product Hunt、AlternativeTo、SaaSHub、G2 等）见
+  `external-channels/directory-submission-copy.md`，粘贴文案已备好
 
 ---
 
-## Outreach 邮件文案（第一梯队通用，[SITE] 替换站点名）
+## Outreach 邮件模板库（按对方内容类型选，[SITE] 替换站点名）
 
-> Subject: A free minutes-to-decimal calculator your readers might like
+> 总原则（哥飞式外联）：主题行不像推销；正文 ≤120 词；先给价值再提工具；
+> 明说"不回复也没关系"降低对方压力。每站只发一次，7-10 天后跟一封。
+
+### T1 · 清单文（"N 个免费工具"类文章）—— 第一梯队主力模板
+
+> Subject: One more free tool for your [ARTICLE TITLE] list
 >
 > Hi [NAME / SITE] team,
 >
-> I'll keep this short. Your [ARTICLE/PAGE NAME] covers [TOOL/RESOURCE] well, and
-> there's one small tool your readers end up needing every pay period: converting
-> clock minutes to decimal hours (45 min = 0.75, not 0.45 — it's the most common
-> timesheet mistake there is).
+> Your [ARTICLE NAME] list is a solid roundup — one small tool your readers
+> end up needing every pay period, though: converting clock minutes to
+> decimal hours (45 min = 0.75, not 0.45 — the most common timesheet
+> mistake there is).
 >
-> I built a free converter at minutestodecimal.org — no signup, runs entirely in
-> the browser. It also works as an embeddable widget if you ever want a live
-> calculator inside a post (iframe, one line, no attribution required).
+> I built a free converter at minutestodecimal.org — no signup, runs
+> entirely in the browser. It also works as an embeddable widget if you
+> ever want a live calculator inside a post (one-line iframe, no
+> attribution required).
 >
 > Either way, thanks for the resource — no reply needed unless it's a fit.
 >
 > [YOUR NAME]
 
-**规则**：每站只发一次；7-10 天后无回复可跟一次；被拒或无回应就换下一家，不缠。
+### T2 · 教程文（"how to calculate hours worked" 类）—— 给正文补一段工具引用
+
+> Subject: A calculator for your [TOPIC] walkthrough
+>
+> Hi [NAME],
+>
+> Your guide on [TOPIC] is one of the clearer ones I've seen — the
+> [SPECIFIC STEP/SECTION] part especially.
+>
+> One thing readers always stumble on right after that step: converting
+> minutes to decimals for payroll. I made a free browser-based converter
+> (minutestodecimal.org) that shows the math live — happy for you to embed
+> it in the post as an interactive widget if you think it helps (one-line
+> iframe, free, no signup on their side either).
+>
+> Either way, nice work on the guide.
+>
+> [YOUR NAME]
+
+### T3 · 健身 / 训练 / 计时类博客 —— 推 seconds-to-minutes 转换器（当前主推页）
+
+> Subject: A free seconds-to-minutes converter for your interval workouts
+>
+> Hi [NAME],
+>
+> Quick one — your post on [WORKOUT/INTERVAL TOPIC] quotes rest rounds in
+> seconds ("8 × 90s"), while most training logs write minutes ("8 × 1:30").
+>
+> I run a free seconds-to-minutes converter at
+> minutestodecimal.org/seconds-to-minutes-converter that answers the
+> common ones on sight (90s = 1.5 min, 300s = 5 min) and converts any
+> value instantly. Runs in the browser, nothing to sign up for. It's also
+> embeddable if you ever want a live widget in a post.
+>
+> Keep up the good content.
+>
+> [YOUR NAME]
+
+### T4 · 周工时表 / 薪资结算类站点 —— 推 weekly timesheet calculator + Excel 模板
+
+> Subject: Free weekly timesheet calculator for [SITE] readers
+>
+> Hi [NAME / SITE] team,
+>
+> Your [TIMESHEET/PAYROLL PAGE] already helps people track hours — the
+> next question every reader hits is "what do these hours mean on my
+> paycheck?"
+>
+> I built a free weekly timesheet calculator at minutestodecimal.org:
+> enter clock-in/clock-out times, it splits regular vs. overtime hours,
+> deducts unpaid lunch, and shows decimal hours plus gross pay estimate.
+> There's also a downloadable Excel template. No signup, everything runs
+> in the browser.
+>
+> If it fits your resources section, feel free to link or embed it.
+>
+> [YOUR NAME]
+
+### T5 · 跟进（首封 7-10 天后，只跟一次）
+
+> Subject: Re: [ORIGINAL SUBJECT]
+>
+> Hi [NAME],
+>
+> Just floating this back up in case it got buried — the offer stands:
+> free converter, embeddable in one line, nothing required from your
+> readers. If now's not a good time, no worries at all.
+>
+> [YOUR NAME]
+
+### T6 · 对方同意后的交付邮件（24 小时内回复，附现成代码）
+
+> Subject: Re: [ORIGINAL SUBJECT]
+>
+> Great — here's the one-line embed, sized to fit a post column:
+>
+> [IFRAME CODE — 按对方页面选模式，见下]
+>
+> It's fully client-side (nothing is sent to a server), mobile-responsive,
+> and free forever. If the default size doesn't fit your layout, tell me
+> the width you need and I'll send a pre-sized version.
+>
+> Thanks for including it!
+>
+> [YOUR NAME]
+
+**嵌入模式速查**（按对方内容选 mode）：
+| 对方内容 | 用哪个 mode | 链接参数 |
+|---|---|---|
+| 薪资/工时表/记账 | `minutesToHours` | `/embed?mode=minutesToHours` |
+| 健身/计时/视频剪辑 | `secondsToMinutes` | `/embed?mode=secondsToMinutes` |
+| 反向换算（小数→时分） | `decimalToHours` | `/embed?mode=decimalToHours` |
+| 周工时/加班/薪资估算 | 不用 embed，直接给页链 | `/weekly-timesheet-calculator` |
+
+**规则**：每站只发一次；7-10 天后无回复可跟一次（T5）；被拒或无回应就换下一家，不缠。
+发送记录填到下方执行记录表。
 
 ## 嵌入代码（发给对方时随邮件附上）
 
