@@ -105,7 +105,12 @@ export default function Page() {
           </p>
           <p>
             Most timesheets keep two decimal places, so 0.3333 is written as 0.33. Use the converter
-            above for any value, or scan the chart below for the common ones.
+            above for any value, or scan the chart below for the common ones. If your source data
+            is in seconds instead of minutes, the{" "}
+            <a href="/seconds-to-minutes-converter" className="font-medium text-brand-700 hover:underline">
+              seconds to minutes converter
+            </a>{" "}
+            applies the same ÷60 rule one unit down (90 seconds = 1.5 minutes).
           </p>
         </ProseSection>
 

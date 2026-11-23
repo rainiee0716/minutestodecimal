@@ -1,10 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
-import { allLongtailSlugs } from "@/lib/longtail";
 
 // 站点最近一次内容更新时间，供爬虫判断抓取优先级
 const LAST_MODIFIED = new Date("2026-11-09");
-const LONGTAIL_MODIFIED = new Date("2026-10-23");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
@@ -31,14 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/privacy`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // 程序化长尾页（minutes/seconds/hours 具体数字换算），优先级低于核心工具页
-  const longtail: MetadataRoute.Sitemap = allLongtailSlugs().map((slug) => ({
-    url: `${SITE_URL}/${slug}`,
-    lastModified: LONGTAIL_MODIFIED,
-    changeFrequency: "yearly",
-    priority: 0.5,
-  }));
-
   // 西语页（/es 前缀，与英文页互惠 hreflang）
   const spanish: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/es`, lastModified: new Date("2026-11-13"), changeFrequency: "monthly", priority: 0.7 },
@@ -53,7 +43,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   ];
 
-  // 数值页（keeper）：分钟 4 页 + 秒转分钟 13 页，全部静态生成
+  // 数值页（keeper）：分钟 4 页 + 秒转分钟 13 页，全部静态生成。
+  // 注意：allLongtailSlugs() 返回的就是这批 keeper slug，此前曾在此额外输出一次，
+  // 导致每个数值页在 sitemap 里出现两次（2026-10-23 / 2026-11-19 两个 lastmod）。
+  // 重复条目已删除，这里保留唯一一份（较新的 lastmod + 较高优先级）。
   const KEEPER_SLUGS = [
     "20-minutes-in-decimal", "45-minutes-in-decimal", "10-minutes-in-decimal", "30-minutes-in-decimal",
     "90-seconds-to-minutes", "600-seconds-to-minutes", "300-seconds-to-minutes", "1000-seconds-to-minutes",
@@ -68,5 +61,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...core, ...longtail, ...keepers, ...spanish];
+  return [...core, ...keepers, ...spanish];
 }

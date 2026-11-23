@@ -9,10 +9,10 @@ import FAQList from "@/components/FAQList";
 import RelatedLinks from "@/components/RelatedLinks";
 
 export const metadata = pageMetadata({
-  title: "Seconds to Minutes Converter",
+  title: "Seconds to Minutes Converter — Instant Answers & Chart",
   description: "Convert seconds into minutes (e.g. 90s \u2192 1.5 min). Free, instant tool for timers, workouts, and time math.",
   path: "/seconds-to-minutes-converter",
-  absoluteTitle: false,
+  absoluteTitle: true,
 });
 
 const faq = [
@@ -66,21 +66,63 @@ const faq = [
   },
 ];
 
-const CONVERSIONS: [string, string][] = [
-  ["15 seconds", "0.25 minutes"],
-  ["30 seconds", "0.5 minutes"],
-  ["45 seconds", "0.75 minutes"],
-  ["60 seconds", "1 minute"],
-  ["90 seconds", "1.5 minutes"],
-  ["120 seconds", "2 minutes"],
-  ["180 seconds", "3 minutes"],
-  ["300 seconds", "5 minutes"],
-  ["600 seconds", "10 minutes"],
-  ["900 seconds", "15 minutes"],
-  ["1,000 seconds", "16.67 minutes (16m 40s)"],
-  ["1,800 seconds", "30 minutes"],
-  ["3,600 seconds", "60 minutes"],
-  ["7,200 seconds", "120 minutes"],
+// 首屏即时答案（Step 1 枢纽改造：答案先于工具出现）
+// 900 秒暂无数值页（不在 KEEPER_SLUGS 白名单），保持纯文本行
+const INSTANT_ANSWERS: [string, string, string | null][] = [
+  ["90 seconds = 1.5 minutes", "90 ÷ 60", "/90-seconds-to-minutes"],
+  ["300 seconds = 5 minutes", "300 ÷ 60", "/300-seconds-to-minutes"],
+  ["600 seconds = 10 minutes", "600 ÷ 60", "/600-seconds-to-minutes"],
+  ["900 seconds = 15 minutes", "900 ÷ 60", null],
+  ["1,000 seconds = 16.67 minutes", "1,000 ÷ 60", "/1000-seconds-to-minutes"],
+  ["1,800 seconds = 30 minutes", "1,800 ÷ 60", "/1800-seconds-to-minutes"],
+  ["3,600 seconds = 60 minutes", "3,600 ÷ 60", "/3600-seconds-to-minutes"],
+];
+
+// 三列换算表（秒 / 分钟 / 小数小时）：首列为查询短语锚文本，13 个 keeper 数值页全部内链
+const CONVERSIONS: [string, string, string][] = [
+  ["15 seconds to minutes", "0.25 min", "0.0042 h"],
+  ["30 seconds to minutes", "0.5 min", "0.0083 h"],
+  ["45 seconds to minutes", "0.75 min", "0.0125 h"],
+  ["60 seconds to minutes", "1 min", "0.0167 h"],
+  ["90 seconds to minutes", "1.5 min", "0.025 h"],
+  ["100 seconds to minutes", "1.67 min", "0.0278 h"],
+  ["120 seconds to minutes", "2 min", "0.0333 h"],
+  ["150 seconds to minutes", "2.5 min", "0.0417 h"],
+  ["180 seconds to minutes", "3 min", "0.05 h"],
+  ["200 seconds to minutes", "3.33 min", "0.0556 h"],
+  ["300 seconds to minutes", "5 min", "0.0833 h"],
+  ["500 seconds to minutes", "8.33 min", "0.1389 h"],
+  ["600 seconds to minutes", "10 min", "0.1667 h"],
+  ["900 seconds to minutes", "15 min", "0.25 h"],
+  ["1000 seconds to minutes", "16.67 min", "0.2778 h"],
+  ["1200 seconds to minutes", "20 min", "0.3333 h"],
+  ["1800 seconds to minutes", "30 min", "0.5 h"],
+  ["2400 seconds to minutes", "40 min", "0.6667 h"],
+  ["3600 seconds to minutes", "60 min", "1 h"],
+  ["7200 seconds to minutes", "120 min", "2 h"],
+];
+
+const CONVERSION_HREFS: (string | null)[] = [
+  null, // 15
+  null, // 30
+  null, // 45
+  null, // 60
+  "/90-seconds-to-minutes",
+  "/100-seconds-to-minutes",
+  "/120-seconds-to-minutes",
+  "/150-seconds-to-minutes",
+  null, // 180
+  "/200-seconds-to-minutes",
+  "/300-seconds-to-minutes",
+  "/500-seconds-to-minutes",
+  "/600-seconds-to-minutes",
+  null, // 900
+  "/1000-seconds-to-minutes",
+  "/1200-seconds-to-minutes",
+  "/1800-seconds-to-minutes",
+  "/2400-seconds-to-minutes",
+  "/3600-seconds-to-minutes",
+  null, // 7200
 ];
 
 // 数值页索引：本簇全部 13 个专用页（Step 3 枢纽改造）
@@ -109,7 +151,30 @@ export default function Page() {
       />
 
       <div className="container pb-16">
-        <div className="mx-auto max-w-5xl">
+        {/* 首屏即时答案：一行一句，链接到对应数值页 */}
+        <section className="mx-auto mt-8 max-w-2xl" aria-label="Instant answers">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">
+            <h2 className="text-base font-semibold tracking-tight text-ink">
+              Instant answers
+            </h2>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {INSTANT_ANSWERS.map(([answer, formula, href]) => (
+                <li key={answer} className="flex items-baseline justify-between gap-3 rounded-lg px-3 py-1.5 odd:bg-slate-50/70">
+                  {href ? (
+                    <a href={href} className="text-sm font-medium text-brand-700 no-underline hover:underline">
+                      {answer}
+                    </a>
+                  ) : (
+                    <span className="text-sm font-medium text-slate-700">{answer}</span>
+                  )}
+                  <span className="font-mono text-xs text-muted">{formula}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <div className="mx-auto mt-8 max-w-5xl">
           <UnitConverter mode="secondsToMinutes" />
         </div>
 
@@ -183,7 +248,13 @@ export default function Page() {
           <h2 className="mb-4 text-center text-xl font-semibold tracking-tight text-ink md:text-2xl">
             Common conversions
           </h2>
-          <ConversionTable fromHeader="Seconds" toHeader="Minutes" rows={CONVERSIONS} />
+          <ConversionTable
+            fromHeader="Seconds"
+            midHeader="Minutes"
+            toHeader="Decimal hours"
+            rows={CONVERSIONS}
+            firstColHrefs={CONVERSION_HREFS}
+          />
         </section>
 
         <FAQList items={faq} />

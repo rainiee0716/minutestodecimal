@@ -4,10 +4,19 @@ type Props = {
   /** 三列表的中间列头（如秒→分钟→小时中的 “Minutes”）；不传则保持两列 */
   midHeader?: string;
   rows: [string, string, string?][];
+  /** 与 rows 等长的首列链接数组；传入后第一列渲染为以行文本为锚文本的链接 */
+  firstColHrefs?: (string | null)[];
   className?: string;
 };
 
-export default function ConversionTable({ fromHeader, toHeader, midHeader, rows, className = "" }: Props) {
+export default function ConversionTable({
+  fromHeader,
+  toHeader,
+  midHeader,
+  rows,
+  firstColHrefs,
+  className = "",
+}: Props) {
   const hasMid = Boolean(midHeader);
   return (
     <div
@@ -22,15 +31,26 @@ export default function ConversionTable({ fromHeader, toHeader, midHeader, rows,
           </tr>
         </thead>
         <tbody>
-          {rows.map(([from, mid, to], i) => (
-            <tr key={`${from}-${i}`} className="border-t border-slate-100 transition-colors odd:bg-slate-50/50 hover:bg-brand-50/60">
-              <td className="px-4 py-2.5 text-slate-700">{from}</td>
-              {hasMid && <td className="px-4 py-2.5 text-slate-700">{mid ?? ""}</td>}
-              <td className="px-4 py-2.5 text-right font-mono font-semibold text-brand-700">
-                {to}
-              </td>
-            </tr>
-          ))}
+          {rows.map(([from, mid, to], i) => {
+            const href = firstColHrefs?.[i] ?? null;
+            return (
+              <tr key={`${from}-${i}`} className="border-t border-slate-100 transition-colors odd:bg-slate-50/50 hover:bg-brand-50/60">
+                <td className="px-4 py-2.5 text-slate-700">
+                  {href ? (
+                    <a href={href} className="font-medium text-brand-700 no-underline hover:underline">
+                      {from}
+                    </a>
+                  ) : (
+                    from
+                  )}
+                </td>
+                {hasMid && <td className="px-4 py-2.5 text-slate-700">{mid ?? ""}</td>}
+                <td className="px-4 py-2.5 text-right font-mono font-semibold text-brand-700">
+                  {to}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

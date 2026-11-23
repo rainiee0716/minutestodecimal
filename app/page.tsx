@@ -119,7 +119,11 @@ export default function Home() {
           <Formula>decimal hours = hours + (minutes ÷ 60)</Formula>
           <p>
             It is used by hourly employees, freelancers, and small-business owners who track work
-            time on a timesheet.
+            time on a timesheet. Smaller units follow the same divide-by-60 rule: the{" "}
+            <a href="/seconds-to-minutes-converter" className="font-medium text-brand-700 hover:underline">
+              seconds to minutes converter
+            </a>{" "}
+            turns any second count into minutes instantly (90 seconds = 1.5 minutes).
           </p>
         </ProseSection>
 

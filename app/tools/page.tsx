@@ -110,9 +110,15 @@ export default function ToolsPage() {
         <ProseSection title="How to choose the right tool">
           <p>
             If you need a one-off conversion, start with the minutes-to-decimal converter. If you
-            are filling out a timesheet for a full week, use the weekly timesheet calculator. If you
-            are checking why payroll shows a different number, the time card rounding calculator and
-            the overtime guide are the best places to start.
+            are filling out a timesheet for a full week, use the weekly timesheet calculator. If
+            your source data is in raw seconds — from a timer, workout app, or editing timeline —
+            the{" "}
+            <a href="/seconds-to-minutes-converter" className="font-medium text-brand-700 hover:underline">
+              seconds to minutes converter
+            </a>{" "}
+            is the small-unit version of the same tool. And if you are checking why payroll shows a
+            different number, the time card rounding calculator and the overtime guide are the best
+            places to start.
           </p>
           <p>
             Every tool runs in your browser. Nothing you type is sent to a server, and no account is
